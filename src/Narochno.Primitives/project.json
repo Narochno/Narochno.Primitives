@@ -1,6 +1,13 @@
 ﻿{
   "version": "1.0.0",
 
+  "authors": [ "alanedwardes" ],
+
+  "packOptions": {
+    "tags": [ "primitives" ],
+    "projectUrl": "https://github.com/Narochno/Narochno.Primitives"
+  },
+
   "dependencies": {
   },
 
