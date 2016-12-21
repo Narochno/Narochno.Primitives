@@ -15,12 +15,15 @@ before_build:
 
 after_build:
 - dotnet pack "src\Narochno.Primitives\project.json" -c Release
+- dotnet pack "src\Narochno.Primitives.Json\project.json" -c Release
 
 test_script:
 - dotnet test "test\Narochno.Primitives.Tests" -c Release
+- dotnet test "test\Narochno.Primitives.Json.Tests" -c Release
 
 artifacts:
 - path: src\Narochno.Primitives\bin\Release\*.nupkg
+- path: src\Narochno.Primitives.Json\bin\Release\*.nupkg
 
 deploy:
   - provider: Environment
