@@ -83,7 +83,7 @@ namespace Narochno.Primitives.Tests
             var two = "one";
 
             Assert.True(one.Equals(two));
-            Assert.True(two.Equals(one));
+            Assert.False(two.Equals(one));
         }
 
         [Fact]
@@ -93,7 +93,7 @@ namespace Narochno.Primitives.Tests
             var two = 1;
 
             Assert.True(one.Equals(two));
-            Assert.True(two.Equals(one));
+            Assert.False(two.Equals(one));
         }
     }
 }

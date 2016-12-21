@@ -18,6 +18,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Narochno.Primitives.Tests", "test\Narochno.Primitives.Tests\Narochno.Primitives.Tests.xproj", "{CBFF5E54-650F-4D9E-83A5-40238428EDB0}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Narochno.Primitives.Json", "src\Narochno.Primitives.Json\Narochno.Primitives.Json.xproj", "{94E71F7B-9325-450D-AA11-B08F0174D635}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Narochno.Primitives.Json.Tests", "test\Narochno.Primitives.Json.Tests\Narochno.Primitives.Json.Tests.xproj", "{B03DA370-7CCA-443F-80C1-5822210864DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +36,14 @@ Global
 		{CBFF5E54-650F-4D9E-83A5-40238428EDB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CBFF5E54-650F-4D9E-83A5-40238428EDB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CBFF5E54-650F-4D9E-83A5-40238428EDB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94E71F7B-9325-450D-AA11-B08F0174D635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94E71F7B-9325-450D-AA11-B08F0174D635}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94E71F7B-9325-450D-AA11-B08F0174D635}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94E71F7B-9325-450D-AA11-B08F0174D635}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B03DA370-7CCA-443F-80C1-5822210864DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B03DA370-7CCA-443F-80C1-5822210864DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B03DA370-7CCA-443F-80C1-5822210864DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B03DA370-7CCA-443F-80C1-5822210864DA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,5 +51,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{80A395AE-04D4-4136-9260-7EAA349C9DBE} = {88C95484-CA70-4839-AB35-2CFAC608D15D}
 		{CBFF5E54-650F-4D9E-83A5-40238428EDB0} = {DA1C05C2-7433-4DCC-9074-7C4145AA1710}
+		{94E71F7B-9325-450D-AA11-B08F0174D635} = {88C95484-CA70-4839-AB35-2CFAC608D15D}
+		{B03DA370-7CCA-443F-80C1-5822210864DA} = {DA1C05C2-7433-4DCC-9074-7C4145AA1710}
 	EndGlobalSection
 EndGlobal

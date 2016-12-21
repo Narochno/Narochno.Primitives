@@ -62,17 +62,6 @@ namespace Narochno.Primitives.Tests
         }
 
         [Fact]
-        public void TestOptionalToTypeConversion()
-        {
-            var test = new TestClass();
-            // A method that accepts a certain type, not an optional
-            new Action<TestClass>(x =>
-            {
-                Assert.Same(test, x);
-            })(new Optional<TestClass>(test));
-        }
-
-        [Fact]
         public void TestTypeToOptionalConversion()
         {
             var test = new TestClass();

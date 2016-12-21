@@ -1,0 +1,22 @@
+﻿{
+  "version": "1.0.0",
+
+  "authors": [ "alanedwardes" ],
+
+  "packOptions": {
+    "tags": [ "primitives" ],
+    "projectUrl": "https://github.com/Narochno/Narochno.Primitives.Json"
+  },
+
+  "dependencies": {
+    "Newtonsoft.Json": "9.0.1",
+    "Narochno.Primitives": { "target": "project" }
+  },
+
+  "frameworks": {
+    "netstandard1.3": {
+      "dependencies": {
+      }
+    }
+  }
+}

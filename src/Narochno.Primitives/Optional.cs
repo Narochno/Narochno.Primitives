@@ -2,7 +2,7 @@
 
 namespace Narochno.Primitives
 {
-    public struct Optional<TValue>
+    public struct Optional<TValue> : IOptional
     {
         private readonly TValue value;
 
@@ -27,10 +27,11 @@ namespace Narochno.Primitives
 
         public bool NotSet => !IsSet;
         public bool IsSet { get; }
+        object IOptional.Value => Value;
+
         public override string ToString() => value?.ToString() ?? "Not Set";
         public override int GetHashCode() => value?.GetHashCode() ?? 0;
         public static implicit operator Optional<TValue>(TValue value) => new Optional<TValue>(value);
-        public static implicit operator TValue(Optional<TValue> optional) => optional.Value;
 
         public override bool Equals(object obj)
         {
