@@ -1,2 +1,2 @@
-# Narochno.Primitives [![Build status](https://ci.appveyor.com/api/projects/status/4oo70qalb53n498b?svg=true)](https://ci.appveyor.com/project/alanedwardes/narochno-primitives)
+# Narochno.Primitives [![Build status](https://ci.appveyor.com/api/projects/status/cp7e8kiashwtrcdd/branch/master?svg=true)](https://ci.appveyor.com/project/Narochno/narochno-primitives/branch/master)
 Primitive classes for Narochno libraries.
