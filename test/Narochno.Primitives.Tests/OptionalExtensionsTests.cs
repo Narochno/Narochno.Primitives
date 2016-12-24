@@ -1,4 +1,5 @@
-﻿using Xunit;
+﻿using System;
+using Xunit;
 
 namespace Narochno.Primitives.Tests
 {
@@ -35,11 +36,47 @@ namespace Narochno.Primitives.Tests
         [Fact]
         public void TestNoFallback()
         {
-            var missing = "test".Optional();
+            var existing = "test".Optional();
 
-            var result = missing.Fallback("fallback");
+            var result = existing.Fallback("fallback");
             Assert.True(result.IsSet);
             Assert.Equal("test", result.Value);
+        }
+
+        [Fact]
+        public void TestUnwrapClass()
+        {
+            var original = "test";
+
+            var result = original.Optional();
+
+            Assert.Same(original, result.Unwrap());
+        }
+
+        [Fact]
+        public void TestUnwrapMissingClass()
+        {
+            var result = new Optional<string>();
+
+            Assert.Null(result.Unwrap());
+        }
+
+        [Fact]
+        public void TestUnwrapStruct()
+        {
+            var original = 1;
+
+            var missing = original.Optional();
+
+            Assert.Equal<int>(original, missing.Unwrap());
+        }
+
+        [Fact]
+        public void TestUnwrapMissingStruct()
+        {
+            var result = new Optional<Guid>();
+
+            Assert.Equal<Guid>(Guid.Empty, result.Unwrap());
         }
     }
 }

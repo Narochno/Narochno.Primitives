@@ -16,5 +16,10 @@
 
             return fallback;
         }
+
+        public static TType Unwrap<TType>(this Optional<TType> value)
+        {
+            return value.IsSet ? value.Value : default(TType);
+        }
     }
 }
