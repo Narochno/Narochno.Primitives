@@ -82,7 +82,7 @@ namespace Narochno.Primitives.Tests
         [Fact]
         public void ToNullableMissingTest()
         {
-            var original = new Optional<int>().ToNullable();
+            var original = new Optional<int>().Nullable();
 
             Assert.False(original.HasValue);
         }
@@ -90,7 +90,7 @@ namespace Narochno.Primitives.Tests
         [Fact]
         public void ToNillableTest()
         {
-            var original = 1.Optional().ToNullable();
+            var original = 1.Optional().Nullable();
 
             Assert.True(original.HasValue);
             Assert.Equal(1, original.Value);

@@ -17,7 +17,7 @@
             return value.IsSet ? value.Value : default(TType);
         }
 
-        public static TType? ToNullable<TType>(this Optional<TType> value) where TType : struct
+        public static TType? Nullable<TType>(this Optional<TType> value) where TType : struct
         {
             return value.IsSet ? value.Value : (TType?)null;
         }
