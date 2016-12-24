@@ -78,5 +78,22 @@ namespace Narochno.Primitives.Tests
 
             Assert.Equal<Guid>(Guid.Empty, result.Unwrap());
         }
+
+        [Fact]
+        public void ToNullableMissingTest()
+        {
+            var original = new Optional<int>().ToNullable();
+
+            Assert.False(original.HasValue);
+        }
+
+        [Fact]
+        public void ToNillableTest()
+        {
+            var original = 1.Optional().ToNullable();
+
+            Assert.True(original.HasValue);
+            Assert.Equal(1, original.Value);
+        }
     }
 }

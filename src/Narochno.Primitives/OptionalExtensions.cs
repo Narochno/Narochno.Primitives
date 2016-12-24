@@ -9,17 +9,17 @@
 
         public static Optional<TType> Fallback<TType>(this Optional<TType> value, Optional<TType> fallback)
         {
-            if (value.IsSet)
-            {
-                return value;
-            }
-
-            return fallback;
+            return value.IsSet ? value.Value : fallback;
         }
 
         public static TType Unwrap<TType>(this Optional<TType> value)
         {
             return value.IsSet ? value.Value : default(TType);
+        }
+
+        public static TType? ToNullable<TType>(this Optional<TType> value) where TType : struct
+        {
+            return value.IsSet ? value.Value : (TType?)null;
         }
     }
 }
