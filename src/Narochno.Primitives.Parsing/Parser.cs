@@ -11,6 +11,7 @@
 
         /// <summary>
         /// Convert from <paramref name="input"/> to the type <typeparamref name="TType"/>
+        /// Should throw <see cref="System.ArgumentException"/> if invalid.
         /// </summary>
         /// <param name="input">The input string to convert from</param>
         /// <returns>A converted <typeparamref name="TType"/> object</returns>
@@ -18,6 +19,7 @@
 
         /// <summary>
         /// Convert from <paramref name="input"/> to the type <typeparamref name="TType"/>
+        /// Should not throw on exception, instead return an unset <see cref="Optional{TType}" />.
         /// </summary>
         /// <param name="input">The input string to convert from</param>
         /// <returns>An <see cref="Optional{TType}" /></returns>

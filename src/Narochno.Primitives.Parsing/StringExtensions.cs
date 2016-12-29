@@ -1,6 +1,7 @@
 ﻿using Narochno.Primitives.Parsing.Parsers;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 
 namespace Narochno.Primitives.Parsing
 {
@@ -18,14 +19,20 @@ namespace Narochno.Primitives.Parsing
 
         public static IParser FindParser<TType>()
         {
-            try
+            var type = typeof(TType);
+
+            if (Parsers.ContainsKey(type))
             {
-                return Parsers[typeof(TType)];
+                return Parsers[type];
             }
-            catch (KeyNotFoundException)
+
+            // Enums have to be handled specially
+            if (type.GetTypeInfo().IsEnum)
             {
-                throw new Exception($"Unable to find parser for {typeof(TType).Name}");
+                return new EnumParser<TType>();
             }
+
+            throw new Exception($"Unable to find parser for {typeof(TType).Name}");
         }
 
         /// <summary>
