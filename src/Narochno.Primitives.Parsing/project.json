@@ -10,7 +10,8 @@
 
   "dependencies": {
     "Newtonsoft.Json": "9.0.1",
-    "Narochno.Primitives": { "target": "project" }
+    "Narochno.Primitives": { "target": "project" },
+    "System.Reflection": "4.3.0"
   },
 
   "frameworks": {
