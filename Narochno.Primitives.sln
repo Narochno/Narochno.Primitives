@@ -22,10 +22,6 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Narochno.Primitives.Json", 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Narochno.Primitives.Json.Tests", "test\Narochno.Primitives.Json.Tests\Narochno.Primitives.Json.Tests.xproj", "{B03DA370-7CCA-443F-80C1-5822210864DA}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Narochno.Primitives.Parsing.Tests", "test\Narochno.Primitives.Parsing.Tests\Narochno.Primitives.Parsing.Tests.xproj", "{4FAC3171-DB51-4CEB-A65C-FC09B4FDBDC3}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Narochno.Primitives.Parsing", "src\Narochno.Primitives.Parsing\Narochno.Primitives.Parsing.xproj", "{33912B47-70D0-46CE-BD86-752E795CAE4B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,14 +44,6 @@ Global
 		{B03DA370-7CCA-443F-80C1-5822210864DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B03DA370-7CCA-443F-80C1-5822210864DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B03DA370-7CCA-443F-80C1-5822210864DA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4FAC3171-DB51-4CEB-A65C-FC09B4FDBDC3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4FAC3171-DB51-4CEB-A65C-FC09B4FDBDC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4FAC3171-DB51-4CEB-A65C-FC09B4FDBDC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4FAC3171-DB51-4CEB-A65C-FC09B4FDBDC3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{33912B47-70D0-46CE-BD86-752E795CAE4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{33912B47-70D0-46CE-BD86-752E795CAE4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{33912B47-70D0-46CE-BD86-752E795CAE4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{33912B47-70D0-46CE-BD86-752E795CAE4B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -65,7 +53,5 @@ Global
 		{CBFF5E54-650F-4D9E-83A5-40238428EDB0} = {DA1C05C2-7433-4DCC-9074-7C4145AA1710}
 		{94E71F7B-9325-450D-AA11-B08F0174D635} = {88C95484-CA70-4839-AB35-2CFAC608D15D}
 		{B03DA370-7CCA-443F-80C1-5822210864DA} = {DA1C05C2-7433-4DCC-9074-7C4145AA1710}
-		{4FAC3171-DB51-4CEB-A65C-FC09B4FDBDC3} = {DA1C05C2-7433-4DCC-9074-7C4145AA1710}
-		{33912B47-70D0-46CE-BD86-752E795CAE4B} = {88C95484-CA70-4839-AB35-2CFAC608D15D}
 	EndGlobalSection
 EndGlobal
