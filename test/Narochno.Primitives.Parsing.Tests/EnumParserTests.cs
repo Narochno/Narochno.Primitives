@@ -17,7 +17,7 @@ namespace Narochno.Primitives.Parsing.Tests
         }
 
         [Fact]
-        public void TestParseEnumAttribute()
+        public void TestParseAttribute()
         {
             Assert.Equal(TestEnum.One, "test_one".To<TestEnum>());
             Assert.Equal(TestEnum.Two, "test_two".To<TestEnum>());
@@ -25,7 +25,7 @@ namespace Narochno.Primitives.Parsing.Tests
         }
 
         [Fact]
-        public void TestParseEnumNoAttribute()
+        public void TestParseNoAttribute()
         {
             Assert.Equal(TestEnum.One, "One".To<TestEnum>());
             Assert.Equal(TestEnum.Two, "Two".To<TestEnum>());
@@ -33,7 +33,7 @@ namespace Narochno.Primitives.Parsing.Tests
         }
 
         [Fact]
-        public void TestParseEnumAttributeToOptional()
+        public void TestParseAttributeToOptional()
         {
             Assert.Equal(TestEnum.One, "test_one".ToOptional<TestEnum>().Value);
             Assert.Equal(TestEnum.Two, "test_two".ToOptional<TestEnum>().Value);
@@ -41,7 +41,7 @@ namespace Narochno.Primitives.Parsing.Tests
         }
 
         [Fact]
-        public void TestParseEnumNoAttributeToOptional()
+        public void TestParseNoAttributeToOptional()
         {
             Assert.Equal(TestEnum.One, "One".ToOptional<TestEnum>().Value);
             Assert.Equal(TestEnum.Two, "Two".ToOptional<TestEnum>().Value);
