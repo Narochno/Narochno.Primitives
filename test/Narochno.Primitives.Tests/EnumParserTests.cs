@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.Serialization;
 using Xunit;
 
 namespace Narochno.Primitives.Parsing.Tests
@@ -8,11 +7,11 @@ namespace Narochno.Primitives.Parsing.Tests
     {
         public enum TestEnum
         {
-            [EnumMember(Value = "test_one")]
+            [EnumString("test_one")]
             One,
-            [EnumMember(Value = "test_two")]
+            [EnumString("test_two")]
             Two,
-            [EnumMember(Value = "test_three")]
+            [EnumString("test_three")]
             Three
         }
 

@@ -11,8 +11,7 @@
   "dependencies": {
     "System.Collections": "4.3.0",
     "System.Reflection.Extensions": "4.3.0",
-    "System.Reflection.TypeExtensions": "4.3.0",
-    "System.Runtime.Serialization.Primitives": "4.3.0"
+    "System.Reflection.TypeExtensions": "4.3.0"
   },
 
   "frameworks": {

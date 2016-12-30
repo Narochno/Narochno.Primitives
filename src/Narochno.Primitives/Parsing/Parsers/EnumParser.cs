@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
-using System.Runtime.Serialization;
 
 namespace Narochno.Primitives.Parsing.Parsers
 {
@@ -23,7 +22,7 @@ namespace Narochno.Primitives.Parsing.Parsers
             foreach (var value in Values)
             {
                 foreach (var attribute in Type.GetField(Enum.GetName(Type, value))
-                    .GetCustomAttributes<EnumMemberAttribute>())
+                    .GetCustomAttributes<EnumStringAttribute>())
                 {
                     EnumStrings.Add(attribute.Value, value);
                 }
