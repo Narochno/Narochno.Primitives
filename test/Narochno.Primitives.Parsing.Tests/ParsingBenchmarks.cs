@@ -41,7 +41,7 @@ namespace Narochno.Primitives.Tests
         {
             for (var i = 0; i < Iterations; i++)
             {
-                Assert.True("true".ParseOptional<bool>().Value);
+                Assert.True("true".TryParse<bool>().Value);
             }
         }
 
@@ -79,7 +79,7 @@ namespace Narochno.Primitives.Tests
         {
             for (var i = 0; i < Iterations; i++)
             {
-                Assert.Equal(DateTimeKind.Utc, "Utc".ParseOptional<DateTimeKind>().Value);
+                Assert.Equal(DateTimeKind.Utc, "Utc".TryParse<DateTimeKind>().Value);
             }
         }
 

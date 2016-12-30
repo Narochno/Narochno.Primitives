@@ -19,21 +19,21 @@ namespace Narochno.Primitives.Parsing.Tests
         public void ToType(Type type, string input, object expected)
         {
             Assert.Equal(expected, input.Parse(type));
-            Assert.Equal(expected, input.ParseOptional(type).Value);
+            Assert.Equal(expected, input.TryParse(type).Value);
         }
 
         [Fact]
         public void GuidToType()
         {
             Assert.Equal(new Guid("433158F7-7B46-4E6D-8980-B5492D46F0DE"), "433158F7-7B46-4E6D-8980-B5492D46F0DE".Parse<Guid>());
-            Assert.Equal(new Guid("433158F7-7B46-4E6D-8980-B5492D46F0DE"), "433158F7-7B46-4E6D-8980-B5492D46F0DE".ParseOptional<Guid>().Value);
+            Assert.Equal(new Guid("433158F7-7B46-4E6D-8980-B5492D46F0DE"), "433158F7-7B46-4E6D-8980-B5492D46F0DE".TryParse<Guid>().Value);
         }
 
         [Fact]
         public void UnknownType()
         {
             Assert.Throws<ArgumentException>(() => "test".Parse<PrimitiveParserTests>());
-            Assert.Throws<ArgumentException>(() => "test".ParseOptional<PrimitiveParserTests>());
+            Assert.Throws<ArgumentException>(() => "test".TryParse<PrimitiveParserTests>());
         }
     }
 }

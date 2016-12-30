@@ -10,7 +10,7 @@ namespace Narochno.Primitives.Parsing
         /// <typeparam name="TType">The type to convert to</typeparam>
         /// <param name="input">The input string</param>
         /// <returns>The Optional <typeparamref name="TType"/> parsed from the string <paramref name="input"/></returns>
-        public static Optional<TType> ParseOptional<TType>(this string input)
+        public static Optional<TType> TryParse<TType>(this string input)
         {
             var result = DefaultParserLibrary.Instance.GetParser<TType>().TryParse(input);
             if (result.IsSet)
@@ -26,7 +26,7 @@ namespace Narochno.Primitives.Parsing
         /// <param name="input">The input string</param>
         /// <param name="type">The type to convert to</param>
         /// <returns>The IOptional parsed from the string <paramref name="input"/></returns>
-        public static IOptional ParseOptional(this string input, Type type)
+        public static IOptional TryParse(this string input, Type type)
         {
             return DefaultParserLibrary.Instance.GetParser(type).TryParse(input);
         }

@@ -35,17 +35,17 @@ namespace Narochno.Primitives.Parsing.Tests
         [Fact]
         public void TestParseAttributeToOptional()
         {
-            Assert.Equal(TestEnum.One, "test_one".ParseOptional<TestEnum>().Value);
-            Assert.Equal(TestEnum.Two, "test_two".ParseOptional<TestEnum>().Value);
-            Assert.Equal(TestEnum.Three, "test_three".ParseOptional<TestEnum>().Value);
+            Assert.Equal(TestEnum.One, "test_one".TryParse<TestEnum>().Value);
+            Assert.Equal(TestEnum.Two, "test_two".TryParse<TestEnum>().Value);
+            Assert.Equal(TestEnum.Three, "test_three".TryParse<TestEnum>().Value);
         }
 
         [Fact]
         public void TestParseNoAttributeToOptional()
         {
-            Assert.Equal(TestEnum.One, "One".ParseOptional<TestEnum>().Value);
-            Assert.Equal(TestEnum.Two, "Two".ParseOptional<TestEnum>().Value);
-            Assert.Equal(TestEnum.Three, "Three".ParseOptional<TestEnum>().Value);
+            Assert.Equal(TestEnum.One, "One".TryParse<TestEnum>().Value);
+            Assert.Equal(TestEnum.Two, "Two".TryParse<TestEnum>().Value);
+            Assert.Equal(TestEnum.Three, "Three".TryParse<TestEnum>().Value);
         }
 
         [Fact]
@@ -59,9 +59,9 @@ namespace Narochno.Primitives.Parsing.Tests
         [Fact]
         public void TestParseInvalidToOptional()
         {
-            Assert.False("lol".ParseOptional<TestEnum>().IsSet);
-            Assert.False(string.Empty.ParseOptional<TestEnum>().IsSet);
-            Assert.False(((string)null).ParseOptional<TestEnum>().IsSet);
+            Assert.False("lol".TryParse<TestEnum>().IsSet);
+            Assert.False(string.Empty.TryParse<TestEnum>().IsSet);
+            Assert.False(((string)null).TryParse<TestEnum>().IsSet);
         }
     }
 }
