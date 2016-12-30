@@ -19,7 +19,7 @@ namespace Narochno.Primitives.Parsing
             { typeof(long), new LongParser() }
         };
 
-        public IParser FindParser<TType>()
+        public IParser GetParser<TType>()
         {
             var type = typeof(TType);
 

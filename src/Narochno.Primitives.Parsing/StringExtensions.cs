@@ -10,7 +10,7 @@
         /// <returns>The Optional <typeparamref name="TType"/> parsed from the string <paramref name="input"/></returns>
         public static Optional<TType> ToOptional<TType>(this string input)
         {
-            var result = DefaultParserLibrary.Instance.FindParser<TType>().TryParse(input);
+            var result = DefaultParserLibrary.Instance.GetParser<TType>().TryParse(input);
             if (result.IsSet)
             {
                 return (TType)result.Value;
@@ -25,6 +25,6 @@
         /// <typeparam name="TType">The type to convert to</typeparam>
         /// <param name="input">The input string</param>
         /// <returns>The type <typeparamref name="TType"/> parsed from the string <paramref name="input"/></returns>
-        public static TType To<TType>(this string input) => (TType)DefaultParserLibrary.Instance.FindParser<TType>().Parse(input);
+        public static TType To<TType>(this string input) => (TType)DefaultParserLibrary.Instance.GetParser<TType>().Parse(input);
     }
 }

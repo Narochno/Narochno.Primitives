@@ -4,6 +4,6 @@ namespace Narochno.Primitives.Parsing
 {
     public interface IParserLibrary
     {
-        IParser FindParser<TType>();
+        IParser GetParser<TType>();
     }
 }
