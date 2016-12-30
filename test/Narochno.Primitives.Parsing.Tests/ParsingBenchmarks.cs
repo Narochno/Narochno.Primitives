@@ -64,5 +64,34 @@ namespace Narochno.Primitives.Tests
                 Assert.Equal(DateTimeKind.Utc, "Utc".To<DateTimeKind>());
             }
         }
+
+        [Fact]
+        public void BenchTypedEnumParse()
+        {
+            for (var i = 0; i < Iterations; i++)
+            {
+                Assert.Equal(DateTimeKind.Utc, (DateTimeKind)Enum.Parse(typeof(DateTimeKind), "Utc"));
+            }
+        }
+
+        [Fact]
+        public void BenchGenericEnumTryParse()
+        {
+            for (var i = 0; i < Iterations; i++)
+            {
+                Assert.Equal(DateTimeKind.Utc, "Utc".ToOptional<DateTimeKind>().Value);
+            }
+        }
+
+        [Fact]
+        public void BenchTypedEnumTryParse()
+        {
+            for (var i = 0; i < Iterations; i++)
+            {
+                DateTimeKind result;
+                Enum.TryParse("Utc", out result);
+                Assert.Equal(DateTimeKind.Utc, result);
+            }
+        }
     }
 }

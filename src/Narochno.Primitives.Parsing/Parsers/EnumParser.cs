@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Reflection;
 using System.Runtime.Serialization;
 
@@ -6,56 +7,64 @@ namespace Narochno.Primitives.Parsing.Parsers
 {
     public class EnumParser : Parser<Enum>
     {
-        public Type EnumType { get; }
-        public Array EnumValues { get; }
+        public Type Type { get; }
+        public IList<Enum> Values { get; } = new List<Enum>();
+        public IDictionary<Enum, string> EnumStrings { get; } = new Dictionary<Enum, string>();
 
-        public EnumParser(Type enumType)
+        public EnumParser(Type type)
         {
-            EnumType = enumType;
-            EnumValues = Enum.GetValues(EnumType);
+            Type = type;
+            foreach (var value in Enum.GetValues(type))
+            {
+                Values.Add((Enum)value);
+            }
+
+            // Cache this as it's expensive to fetch
+            foreach (var value in Values)
+            {
+                foreach (var attribute in Type.GetField(Enum.GetName(Type, value))
+                    .GetCustomAttributes<EnumMemberAttribute>())
+                {
+                    EnumStrings.Add(value, attribute.Value);
+                }
+            }
         }
 
         public override Enum Parse(string input)
         {
             // First try to get the fields with EnumMemberAttribute
-            foreach (var value in EnumValues)
+            foreach (var value in Values)
             {
-                foreach (var attribute in EnumType.GetField(Enum.GetName(EnumType, value))
-                    .GetCustomAttributes<EnumMemberAttribute>())
+                if (EnumStrings.ContainsKey(value)
+                    && EnumStrings[value].Equals(input))
                 {
-                    if (attribute.Value.Equals(input))
-                    {
-                        return (Enum)value;
-                    }
+                    return value;
                 }
             }
 
             // Fallback to the real Enum.Parse
-            return (Enum)Enum.Parse(EnumType, input);
+            return (Enum)Enum.Parse(Type, input);
         }
 
         public override Optional<Enum> TryParse(string input)
         {
             // First try to get the fields with EnumMemberAttribute
-            foreach (var value in EnumValues)
+            foreach (var value in Values)
             {
-                foreach (var attribute in EnumType.GetField(Enum.GetName(EnumType, value))
-                    .GetCustomAttributes<EnumMemberAttribute>())
+                if (EnumStrings.ContainsKey(value)
+                    && EnumStrings[value].Equals(input))
                 {
-                    if (attribute.Value.Equals(input))
-                    {
-                        return (Enum)value;
-                    }
+                    return value;
                 }
             }
 
             // Fallback to a try parse (we can't use the
             // real TryParse here as it has type parameters)
-            foreach (var value in EnumValues)
+            foreach (var value in Values)
             {
-                if (Enum.GetName(EnumType, value).Equals(input))
+                if (Enum.GetName(Type, value).Equals(input))
                 {
-                    return (Enum)value;
+                    return value;
                 }
             }
 
