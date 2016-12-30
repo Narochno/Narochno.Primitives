@@ -12,11 +12,18 @@ namespace Narochno.Primitives.Parsing
         public IDictionary<Type, IParser> Parsers { get; } = new Dictionary<Type, IParser>
         {
             { typeof(bool), new BoolParser() },
+            { typeof(char), new CharParser() },
+            { typeof(decimal), new DecimalParser() },
             { typeof(double), new DoubleParser() },
             { typeof(float), new FloatParser() },
             { typeof(Guid), new GuidParser() },
             { typeof(int), new IntParser() },
-            { typeof(long), new LongParser() }
+            { typeof(long), new LongParser() },
+            { typeof(sbyte), new SByteParser() },
+            { typeof(short), new ShortParser() },
+            { typeof(uint), new UIntParser() },
+            { typeof(ulong), new ULongParser() },
+            { typeof(ushort), new UShortParser() }
         };
 
         public IParser GetParser(Type type)
