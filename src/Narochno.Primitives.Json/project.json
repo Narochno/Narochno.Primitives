@@ -5,7 +5,7 @@
 
   "packOptions": {
     "tags": [ "primitives" ],
-    "projectUrl": "https://github.com/Narochno/Narochno.Primitives.Json"
+    "projectUrl": "https://github.com/Narochno/Narochno.Primitives"
   },
 
   "dependencies": {

@@ -1,6 +1,9 @@
-﻿public interface IOptional
+﻿namespace Narochno.Primitives
 {
-    bool IsSet { get; }
-    bool NotSet { get; }
-    object Value { get; }
+    public interface IOptional
+    {
+        bool IsSet { get; }
+        bool NotSet { get; }
+        object Value { get; }
+    }
 }
