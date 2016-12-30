@@ -34,7 +34,7 @@ namespace Narochno.Primitives.Parsing
                 return Parsers[type];
             }
 
-            throw new Exception($"Unable to find parser for {type.Name}");
+            throw new ArgumentException($"Unable to find parser for {type.FullName}");
         }
     }
 }

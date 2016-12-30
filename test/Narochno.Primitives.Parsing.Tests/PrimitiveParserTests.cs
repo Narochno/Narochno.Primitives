@@ -28,5 +28,12 @@ namespace Narochno.Primitives.Parsing.Tests
             Assert.Equal(new Guid("433158F7-7B46-4E6D-8980-B5492D46F0DE"), "433158F7-7B46-4E6D-8980-B5492D46F0DE".To<Guid>());
             Assert.Equal(new Guid("433158F7-7B46-4E6D-8980-B5492D46F0DE"), "433158F7-7B46-4E6D-8980-B5492D46F0DE".ToOptional<Guid>().Value);
         }
+
+        [Fact]
+        public void UnknownType()
+        {
+            Assert.Throws<ArgumentException>(() => "test".To<PrimitiveParserTests>());
+            Assert.Throws<ArgumentException>(() => "test".ToOptional<PrimitiveParserTests>());
+        }
     }
 }

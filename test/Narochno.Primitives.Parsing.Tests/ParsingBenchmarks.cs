@@ -19,7 +19,7 @@ namespace Narochno.Primitives.Tests
         private const int Iterations = 10000000;
 
         [Fact]
-        public void BenchGenericBoolParse()
+        public void GenericBoolParse()
         {
             for (var i = 0; i < Iterations; i++)
             {
@@ -28,7 +28,7 @@ namespace Narochno.Primitives.Tests
         }
 
         [Fact]
-        public void BenchTypedBoolParse()
+        public void TypedBoolParse()
         {
             for (var i = 0; i < Iterations; i++)
             {
@@ -37,7 +37,7 @@ namespace Narochno.Primitives.Tests
         }
 
         [Fact]
-        public void BenchGenericBoolTryParse()
+        public void GenericBoolTryParse()
         {
             for (var i = 0; i < Iterations; i++)
             {
@@ -46,7 +46,7 @@ namespace Narochno.Primitives.Tests
         }
 
         [Fact]
-        public void BenchTypedBoolTryParse()
+        public void TypedBoolTryParse()
         {
             for (var i = 0; i < Iterations; i++)
             {
@@ -57,7 +57,7 @@ namespace Narochno.Primitives.Tests
         }
 
         [Fact]
-        public void BenchGenericEnumParse()
+        public void GenericEnumParse()
         {
             for (var i = 0; i < Iterations; i++)
             {
@@ -66,7 +66,7 @@ namespace Narochno.Primitives.Tests
         }
 
         [Fact]
-        public void BenchTypedEnumParse()
+        public void TypedEnumParse()
         {
             for (var i = 0; i < Iterations; i++)
             {
@@ -75,7 +75,7 @@ namespace Narochno.Primitives.Tests
         }
 
         [Fact]
-        public void BenchGenericEnumTryParse()
+        public void GenericEnumTryParse()
         {
             for (var i = 0; i < Iterations; i++)
             {
@@ -84,7 +84,7 @@ namespace Narochno.Primitives.Tests
         }
 
         [Fact]
-        public void BenchTypedEnumTryParse()
+        public void TypedEnumTryParse()
         {
             for (var i = 0; i < Iterations; i++)
             {
