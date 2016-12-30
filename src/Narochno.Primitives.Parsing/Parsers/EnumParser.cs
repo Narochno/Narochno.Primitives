@@ -9,7 +9,7 @@ namespace Narochno.Primitives.Parsing.Parsers
     {
         public Type Type { get; }
         public IList<Enum> Values { get; } = new List<Enum>();
-        public IDictionary<Enum, string> EnumStrings { get; } = new Dictionary<Enum, string>();
+        public IDictionary<string, Enum> EnumStrings { get; } = new Dictionary<string, Enum>();
 
         public EnumParser(Type type)
         {
@@ -25,7 +25,7 @@ namespace Narochno.Primitives.Parsing.Parsers
                 foreach (var attribute in Type.GetField(Enum.GetName(Type, value))
                     .GetCustomAttributes<EnumMemberAttribute>())
                 {
-                    EnumStrings.Add(value, attribute.Value);
+                    EnumStrings.Add(attribute.Value, value);
                 }
             }
         }
@@ -33,13 +33,9 @@ namespace Narochno.Primitives.Parsing.Parsers
         public override Enum Parse(string input)
         {
             // First try to get the fields with EnumMemberAttribute
-            foreach (var value in Values)
+            if (input != null && EnumStrings.ContainsKey(input))
             {
-                if (EnumStrings.ContainsKey(value)
-                    && EnumStrings[value].Equals(input))
-                {
-                    return value;
-                }
+                return EnumStrings[input];
             }
 
             // Fallback to the real Enum.Parse
@@ -49,13 +45,9 @@ namespace Narochno.Primitives.Parsing.Parsers
         public override Optional<Enum> TryParse(string input)
         {
             // First try to get the fields with EnumMemberAttribute
-            foreach (var value in Values)
+            if (input != null && EnumStrings.ContainsKey(input))
             {
-                if (EnumStrings.ContainsKey(value)
-                    && EnumStrings[value].Equals(input))
-                {
-                    return value;
-                }
+                return EnumStrings[input];
             }
 
             // Fallback to a try parse (we can't use the
