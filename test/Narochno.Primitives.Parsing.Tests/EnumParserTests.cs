@@ -1,4 +1,5 @@
-﻿using System.Runtime.Serialization;
+﻿using System;
+using System.Runtime.Serialization;
 using Xunit;
 
 namespace Narochno.Primitives.Parsing.Tests
@@ -45,6 +46,22 @@ namespace Narochno.Primitives.Parsing.Tests
             Assert.Equal(TestEnum.One, "One".ToOptional<TestEnum>().Value);
             Assert.Equal(TestEnum.Two, "Two".ToOptional<TestEnum>().Value);
             Assert.Equal(TestEnum.Three, "Three".ToOptional<TestEnum>().Value);
+        }
+
+        [Fact]
+        public void TestParseInvalid()
+        {
+            Assert.Throws<ArgumentException>(() => "lol".To<TestEnum>());
+            Assert.Throws<ArgumentException>(() => string.Empty.To<TestEnum>());
+            Assert.Throws<ArgumentNullException>(() => ((string)null).To<TestEnum>());
+        }
+
+        [Fact]
+        public void TestParseInvalidToOptional()
+        {
+            Assert.False("lol".ToOptional<TestEnum>().IsSet);
+            Assert.False(string.Empty.ToOptional<TestEnum>().IsSet);
+            Assert.False(((string)null).ToOptional<TestEnum>().IsSet);
         }
     }
 }
