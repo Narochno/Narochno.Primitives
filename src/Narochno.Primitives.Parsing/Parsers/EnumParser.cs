@@ -17,38 +17,45 @@ namespace Narochno.Primitives.Parsing.Parsers
 
         public override Enum Parse(string input)
         {
-            foreach (var enumValue in EnumValues)
+            // First try to get the fields with EnumMemberAttribute
+            foreach (var value in EnumValues)
             {
-                foreach (var attribute in EnumType.GetField(enumValue.ToString()).GetCustomAttributes<EnumMemberAttribute>())
+                foreach (var attribute in EnumType.GetField(Enum.GetName(EnumType, value))
+                    .GetCustomAttributes<EnumMemberAttribute>())
                 {
                     if (attribute.Value.Equals(input))
                     {
-                        return (Enum)enumValue;
+                        return (Enum)value;
                     }
                 }
             }
 
+            // Fallback to the real Enum.Parse
             return (Enum)Enum.Parse(EnumType, input);
         }
 
         public override Optional<Enum> TryParse(string input)
         {
-            foreach (var enumValue in EnumValues)
+            // First try to get the fields with EnumMemberAttribute
+            foreach (var value in EnumValues)
             {
-                foreach (var attribute in EnumType.GetField(enumValue.ToString()).GetCustomAttributes<EnumMemberAttribute>())
+                foreach (var attribute in EnumType.GetField(Enum.GetName(EnumType, value))
+                    .GetCustomAttributes<EnumMemberAttribute>())
                 {
                     if (attribute.Value.Equals(input))
                     {
-                        return (Enum)enumValue;
+                        return (Enum)value;
                     }
                 }
             }
 
-            foreach (var enumValue in EnumValues)
+            // Fall back to a try parse (we can't use the
+            // real TryParse here as it has type parameters)
+            foreach (var value in EnumValues)
             {
-                if (Enum.GetName(EnumType, enumValue).Equals(input))
+                if (Enum.GetName(EnumType, value).Equals(input))
                 {
-                    return (Enum)enumValue;
+                    return (Enum)value;
                 }
             }
 

@@ -5,7 +5,7 @@ namespace Narochno.Primitives.Tests
 {
     /// <summary>
     /// Test class to compare the timings of each
-    /// parse method using a large number of iterations.#
+    /// parse method using a large number of iterations.
     /// 
     /// A good way to use this class is to test before changes
     /// and afterwards, to see if/how the time to parse has changed.
