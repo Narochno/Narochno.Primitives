@@ -4,14 +4,14 @@ using System.Runtime.Serialization;
 
 namespace Narochno.Primitives.Parsing.Parsers
 {
-    public class EnumParser<TEnumType> : Parser<Enum>
+    public class EnumParser : Parser<Enum>
     {
         public Type EnumType { get; }
         public Array EnumValues { get; }
 
-        public EnumParser()
+        public EnumParser(Type enumType)
         {
-            EnumType = typeof(TEnumType);
+            EnumType = enumType;
             EnumValues = Enum.GetValues(EnumType);
         }
 
@@ -49,7 +49,7 @@ namespace Narochno.Primitives.Parsing.Parsers
                 }
             }
 
-            // Fall back to a try parse (we can't use the
+            // Fallback to a try parse (we can't use the
             // real TryParse here as it has type parameters)
             foreach (var value in EnumValues)
             {

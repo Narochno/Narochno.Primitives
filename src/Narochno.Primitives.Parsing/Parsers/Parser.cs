@@ -1,9 +1,9 @@
 ﻿namespace Narochno.Primitives.Parsing.Parsers
 {
     /// <summary>
-    /// The base class for all <typeparamref name="TType"/> parsers
+    /// The base class for all parsers
     /// </summary>
-    /// <typeparam name="TType">The type this class will convert to</typeparam>
+    /// <typeparam name="TType">The type this class will parse</typeparam>
     public abstract class Parser<TType> : IParser
     {
         object IParser.Parse(string input) => Parse(input);

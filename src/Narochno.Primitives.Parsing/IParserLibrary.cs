@@ -1,9 +1,10 @@
 ﻿using Narochno.Primitives.Parsing.Parsers;
+using System;
 
 namespace Narochno.Primitives.Parsing
 {
     public interface IParserLibrary
     {
-        IParser GetParser<TType>();
+        IParser GetParser(Type type);
     }
 }

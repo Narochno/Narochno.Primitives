@@ -1,4 +1,5 @@
 ﻿using Narochno.Primitives.Parsing;
+using System;
 using Xunit;
 
 namespace Narochno.Primitives.Tests
@@ -13,12 +14,12 @@ namespace Narochno.Primitives.Tests
     public class ParsingBenchmarks
     {
         /// <summary>
-        /// One hundred million
+        /// 10 million
         /// </summary>
-        private const int Iterations = 100000000;
+        private const int Iterations = 10000000;
 
         [Fact]
-        public void BenchGenericParse()
+        public void BenchGenericBoolParse()
         {
             for (var i = 0; i < Iterations; i++)
             {
@@ -27,7 +28,7 @@ namespace Narochno.Primitives.Tests
         }
 
         [Fact]
-        public void BenchTypedParse()
+        public void BenchTypedBoolParse()
         {
             for (var i = 0; i < Iterations; i++)
             {
@@ -36,7 +37,7 @@ namespace Narochno.Primitives.Tests
         }
 
         [Fact]
-        public void BenchGenericTryParse()
+        public void BenchGenericBoolTryParse()
         {
             for (var i = 0; i < Iterations; i++)
             {
@@ -45,13 +46,22 @@ namespace Narochno.Primitives.Tests
         }
 
         [Fact]
-        public void BenchTypedTryParse()
+        public void BenchTypedBoolTryParse()
         {
             for (var i = 0; i < Iterations; i++)
             {
                 bool result = false;
                 bool.TryParse("true", out result);
                 Assert.True(result);
+            }
+        }
+
+        [Fact]
+        public void BenchGenericEnumParse()
+        {
+            for (var i = 0; i < Iterations; i++)
+            {
+                Assert.Equal(DateTimeKind.Utc, "Utc".To<DateTimeKind>());
             }
         }
     }

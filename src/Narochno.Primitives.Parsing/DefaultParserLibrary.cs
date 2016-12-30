@@ -19,22 +19,22 @@ namespace Narochno.Primitives.Parsing
             { typeof(long), new LongParser() }
         };
 
-        public IParser GetParser<TType>()
+        public IParser GetParser(Type type)
         {
-            var type = typeof(TType);
-
             if (Parsers.ContainsKey(type))
             {
                 return Parsers[type];
             }
 
-            // Enums have to be handled specially
+            // Enums need type information,
+            // so each one gets a parser
             if (type.GetTypeInfo().IsEnum)
             {
-                return new EnumParser<TType>();
+                Parsers.Add(type, new EnumParser(type));
+                return Parsers[type];
             }
 
-            throw new Exception($"Unable to find parser for {typeof(TType).Name}");
+            throw new Exception($"Unable to find parser for {type.Name}");
         }
     }
 }
