@@ -23,7 +23,7 @@ namespace Narochno.Primitives.Tests
         {
             for (var i = 0; i < Iterations; i++)
             {
-                Assert.True("true".To<bool>());
+                Assert.True("true".Parse<bool>());
             }
         }
 
@@ -41,7 +41,7 @@ namespace Narochno.Primitives.Tests
         {
             for (var i = 0; i < Iterations; i++)
             {
-                Assert.True("true".ToOptional<bool>().Value);
+                Assert.True("true".ParseOptional<bool>().Value);
             }
         }
 
@@ -61,7 +61,7 @@ namespace Narochno.Primitives.Tests
         {
             for (var i = 0; i < Iterations; i++)
             {
-                Assert.Equal(DateTimeKind.Utc, "Utc".To<DateTimeKind>());
+                Assert.Equal(DateTimeKind.Utc, "Utc".Parse<DateTimeKind>());
             }
         }
 
@@ -79,7 +79,7 @@ namespace Narochno.Primitives.Tests
         {
             for (var i = 0; i < Iterations; i++)
             {
-                Assert.Equal(DateTimeKind.Utc, "Utc".ToOptional<DateTimeKind>().Value);
+                Assert.Equal(DateTimeKind.Utc, "Utc".ParseOptional<DateTimeKind>().Value);
             }
         }
 

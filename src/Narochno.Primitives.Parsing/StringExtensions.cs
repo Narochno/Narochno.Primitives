@@ -10,7 +10,7 @@ namespace Narochno.Primitives.Parsing
         /// <typeparam name="TType">The type to convert to</typeparam>
         /// <param name="input">The input string</param>
         /// <returns>The Optional <typeparamref name="TType"/> parsed from the string <paramref name="input"/></returns>
-        public static Optional<TType> ToOptional<TType>(this string input)
+        public static Optional<TType> ParseOptional<TType>(this string input)
         {
             var result = DefaultParserLibrary.Instance.GetParser<TType>().TryParse(input);
             if (result.IsSet)
@@ -26,7 +26,7 @@ namespace Narochno.Primitives.Parsing
         /// <param name="input">The input string</param>
         /// <param name="type">The type to convert to</param>
         /// <returns>The IOptional parsed from the string <paramref name="input"/></returns>
-        public static IOptional ToOptional(this string input, Type type)
+        public static IOptional ParseOptional(this string input, Type type)
         {
             return DefaultParserLibrary.Instance.GetParser(type).TryParse(input);
         }
@@ -37,7 +37,7 @@ namespace Narochno.Primitives.Parsing
         /// <typeparam name="TType">The type to convert to</typeparam>
         /// <param name="input">The input string</param>
         /// <returns>The type <typeparamref name="TType"/> parsed from the string <paramref name="input"/></returns>
-        public static TType To<TType>(this string input)
+        public static TType Parse<TType>(this string input)
         {
             return (TType)DefaultParserLibrary.Instance.GetParser<TType>().Parse(input);
         }
@@ -48,7 +48,7 @@ namespace Narochno.Primitives.Parsing
         /// <param name="input">The input string</param>
         /// <param name="type">The type to convert to</param>
         /// <returns>The type parsed from the string <paramref name="input"/></returns>
-        public static object To(this string input, Type type)
+        public static object Parse(this string input, Type type)
         {
             return DefaultParserLibrary.Instance.GetParser(type).Parse(input);
         }
