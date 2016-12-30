@@ -1,4 +1,4 @@
-﻿namespace Narochno.Primitives.Parsing.Parsers
+﻿namespace Narochno.Primitives.Parsing
 {
     /// <summary>
     /// The base class for all parsers

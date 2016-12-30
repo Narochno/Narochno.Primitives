@@ -1,4 +1,4 @@
-﻿namespace Narochno.Primitives.Parsing.Parsers
+﻿namespace Narochno.Primitives.Parsing
 {
     /// <summary>
     /// Do not implement this, it offers no type safety!
