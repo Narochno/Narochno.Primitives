@@ -76,7 +76,7 @@ public class BoolParser : Parser<bool>
     }
 }
 ```
-Additional parsers can be added for the static string extension methods .Parse and .TryParse by adding to the static `Parsers` dictionary in `DefaultParserLibrary.Parsers`.
+Additional parsers can be added for the static string extension methods .Parse and .TryParse by adding to the static `Parsers` dictionary in `DefaultParserLibrary`.
 ```csharp
 DefaultParserLibrary.Parsers.Add(typeof(MyType), new MyTypeParser());
 ```
@@ -89,4 +89,10 @@ var parser = new DefaultParserLibrary()
     .GetParser<bool>();
 
 bool itsTrue = (bool)parser.Parse("true");
+```
+Parsing can be used with dependency injection - simply register `DefaultParserLibrary` against the interface `IParsingLibrary` in your container and inject into your class constructor. Using the library this way allows you to mock its methods in unit tests.
+```csharp
+var provider = new ServiceCollection()
+    .AddTransient<IParsingLibrary, DefaultParserLibrary>()
+    .BuildServiceProvider();
 ```
