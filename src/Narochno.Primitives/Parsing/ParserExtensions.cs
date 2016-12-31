@@ -9,6 +9,7 @@
             {
                 return (TType)result.Value;
             }
+
             return new Optional<TType>();
         }
 
