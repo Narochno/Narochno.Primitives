@@ -58,7 +58,7 @@ MyEnum parsed = "second".Parse<MyEnum>();
 ```
 
 ### Extending Parsers
-A custom parser will need to inherit from the `Parser` class, which requires the implementation of two methods:
+A custom parser will need to inherit from the `Parser` class, which requires the implementation of two methods.
 ```csharp
 public class BoolParser : Parser<bool>
 {
@@ -88,7 +88,7 @@ The `DefaultParserLibrary` can also be instantiated, and used as follows, comple
 var parser = new DefaultParserLibrary()
     .GetParser<bool>();
 
-bool itsTrue = (bool)parser.Parse("true");
+bool itIsTrue = parser.Parse<bool>("true");
 ```
 Parsing can be used with dependency injection - simply register `DefaultParserLibrary` against the interface `IParserLibrary` in your container and inject into your class constructor. Using the library this way allows you to mock its methods in unit tests.
 ```csharp
