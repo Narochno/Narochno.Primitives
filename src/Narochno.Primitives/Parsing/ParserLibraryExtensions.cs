@@ -1,6 +1,4 @@
-﻿using Narochno.Primitives.Parsing.Parsers;
-
-namespace Narochno.Primitives.Parsing
+﻿namespace Narochno.Primitives.Parsing
 {
     public static class ParserLibraryExtensions
     {
