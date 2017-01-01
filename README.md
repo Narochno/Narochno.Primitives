@@ -20,7 +20,7 @@ public async Task RecordInformation(Information information, Optional<Location> 
         document["city"] = location.City;
     }
 
-    await Table.LoadTable(dynamoClient, "UserInformation")
+    await Table.LoadTable(dynamoClient, "Information")
         .PutItemAsync(document);
 }
 ```
@@ -32,13 +32,13 @@ A set of classes to provide parsing of strings into types. Allows a single gener
 
 The library also adds support for enum string values.
 ### Example .Parse&lt;T&gt; Usage
-The string extension method .Parse&lt;T&gt; or .Parse(type) can be used to parse a string to a specific type, and throw an exception if the parse fails.
+The string extension method `.Parse<T>` or `.Parse(type)` can be used to parse a string to a specific type, and throw an exception if the parse fails.
 ```csharp
 int number = "20".Parse<int>();
 float floating = "20.25".Parse<float>();
 ```
 ### Example .TryParse&lt;T&gt; Usage
-The string extension method .TryParse&lt;T&gt; or .TryParse(type) can be used to parse a string to a specific type, returning an optional result (and no exception if the parse fails).
+The string extension method `.TryParse<T>` or `.TryParse(type)` can be used to parse a string to a specific type, returning an optional result (and no exception if the parse fails).
 ```csharp
 Optional<int> optionalNumber = "10".TryParse<int>();
 Optional<float> optionalFloat = "10.1".TryParse<float>();
@@ -76,21 +76,21 @@ public class BoolParser : Parser<bool>
     }
 }
 ```
-Additional parsers can be added for the static string extension methods .Parse and .TryParse by adding to the static `Parsers` dictionary in `DefaultParserLibrary`.
+Additional parsers can be added for the static string extension methods `.Parse` and `.TryParse` by adding to the static `Parsers` dictionary in `DefaultParserLibrary`.
 ```csharp
 DefaultParserLibrary.Parsers.Add(typeof(MyType), new MyTypeParser());
 ```
 ### Parsing in a Non-Static Context
-The parsing library provides the `DefaultParserLibrary.Instance` static for convenience. This can be re-assigned in your application to anything that implements the interface `IParsingLibrary`.
+The parsing library provides the `DefaultParserLibrary.Instance` static for convenience. This can be re-assigned in your application to anything that implements the interface `IParserLibrary`.
 
-The DefaultParserLibrary can also be instantiated, and used as follows, completely avoiding the static extensions.
+The `DefaultParserLibrary` can also be instantiated, and used as follows, completely avoiding the static extensions.
 ```csharp
 var parser = new DefaultParserLibrary()
     .GetParser<bool>();
 
 bool itsTrue = (bool)parser.Parse("true");
 ```
-Parsing can be used with dependency injection - simply register `DefaultParserLibrary` against the interface `IParsingLibrary` in your container and inject into your class constructor. Using the library this way allows you to mock its methods in unit tests.
+Parsing can be used with dependency injection - simply register `DefaultParserLibrary` against the interface `IParserLibrary` in your container and inject into your class constructor. Using the library this way allows you to mock its methods in unit tests.
 ```csharp
 var provider = new ServiceCollection()
     .AddTransient<IParsingLibrary, DefaultParserLibrary>()
