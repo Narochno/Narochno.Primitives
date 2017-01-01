@@ -12,12 +12,8 @@ namespace Narochno.Primitives.Parsing
         /// <returns>The Optional <typeparamref name="TType"/> parsed from the string <paramref name="input"/></returns>
         public static Optional<TType> TryParse<TType>(this string input)
         {
-            var result = DefaultParserLibrary.Instance.GetParser<TType>().TryParse(input);
-            if (result.IsSet)
-            {
-                return (TType)result.Value;
-            }
-            return new Optional<TType>();
+            return DefaultParserLibrary.Instance.GetParser<TType>()
+                .TryParse<TType>(input);
         }
 
         /// <summary>
@@ -28,7 +24,8 @@ namespace Narochno.Primitives.Parsing
         /// <returns>The IOptional parsed from the string <paramref name="input"/></returns>
         public static IOptional TryParse(this string input, Type type)
         {
-            return DefaultParserLibrary.Instance.GetParser(type).TryParse(input);
+            return DefaultParserLibrary.Instance.GetParser(type)
+                .TryParse(input);
         }
 
         /// <summary>
@@ -39,7 +36,8 @@ namespace Narochno.Primitives.Parsing
         /// <returns>The type <typeparamref name="TType"/> parsed from the string <paramref name="input"/></returns>
         public static TType Parse<TType>(this string input)
         {
-            return (TType)DefaultParserLibrary.Instance.GetParser<TType>().Parse(input);
+            return DefaultParserLibrary.Instance.GetParser<TType>()
+                .Parse<TType>(input);
         }
 
         /// <summary>
@@ -50,7 +48,8 @@ namespace Narochno.Primitives.Parsing
         /// <returns>The type parsed from the string <paramref name="input"/></returns>
         public static object Parse(this string input, Type type)
         {
-            return DefaultParserLibrary.Instance.GetParser(type).Parse(input);
+            return DefaultParserLibrary.Instance.GetParser(type)
+                .Parse(input);
         }
     }
 }
