@@ -93,6 +93,6 @@ bool itsTrue = (bool)parser.Parse("true");
 Parsing can be used with dependency injection - simply register `DefaultParserLibrary` against the interface `IParserLibrary` in your container and inject into your class constructor. Using the library this way allows you to mock its methods in unit tests.
 ```csharp
 var provider = new ServiceCollection()
-    .AddTransient<IParsingLibrary, DefaultParserLibrary>()
+    .AddTransient<IParserLibrary, DefaultParserLibrary>()
     .BuildServiceProvider();
 ```
