@@ -37,7 +37,7 @@ namespace Narochno.Primitives.Parsing
             // so each one gets a parser
             if (type.GetTypeInfo().IsEnum)
             {
-                Parsers.Add(type, new EnumParser(type));
+                Parsers.Add(type, (IParser)Activator.CreateInstance(typeof(EnumParser<>).MakeGenericType(type)));
                 return Parsers[type];
             }
 

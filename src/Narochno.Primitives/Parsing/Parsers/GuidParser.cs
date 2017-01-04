@@ -6,7 +6,7 @@ namespace Narochno.Primitives.Parsing.Parsers
     {
         public override Guid Parse(string input) => Guid.Parse(input);
 
-        public override Optional<Guid> TryParse(string input)
+        public override Guid? TryParse(string input)
         {
             Guid result;
             if (Guid.TryParse(input, out result))
@@ -14,7 +14,7 @@ namespace Narochno.Primitives.Parsing.Parsers
                 return result;
             }
 
-            return new Optional<Guid>();
+            return null;
         }
     }
 }

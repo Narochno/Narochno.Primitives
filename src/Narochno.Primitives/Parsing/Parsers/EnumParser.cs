@@ -4,18 +4,19 @@ using System.Reflection;
 
 namespace Narochno.Primitives.Parsing.Parsers
 {
-    public class EnumParser : Parser<Enum>
+    public class EnumParser<T>: Parser<T>
+        where T : struct 
     {
         public Type Type { get; }
-        public IList<Enum> Values { get; } = new List<Enum>();
-        public IDictionary<string, Enum> EnumStrings { get; } = new Dictionary<string, Enum>();
+        public List<T> Values { get; } = new List<T>();
+        public IDictionary<string, T> EnumStrings { get; } = new Dictionary<string, T>();
 
-        public EnumParser(Type type)
+        public EnumParser()
         {
-            Type = type;
-            foreach (var value in Enum.GetValues(type))
+            Type = typeof(T);
+            foreach (var value in Enum.GetValues(Type))
             {
-                Values.Add((Enum)value);
+                Values.Add((T)value);
             }
 
             // Cache this as it's expensive to fetch
@@ -24,12 +25,12 @@ namespace Narochno.Primitives.Parsing.Parsers
                 foreach (var attribute in Type.GetField(Enum.GetName(Type, value))
                     .GetCustomAttributes<EnumStringAttribute>())
                 {
-                    EnumStrings.Add(attribute.Value, value);
+                    EnumStrings.Add(attribute.Value, (T)value);
                 }
             }
         }
 
-        public override Enum Parse(string input)
+        public override T Parse(string input)
         {
             // First try to get the fields with EnumMemberAttribute
             if (input != null && EnumStrings.ContainsKey(input))
@@ -38,10 +39,10 @@ namespace Narochno.Primitives.Parsing.Parsers
             }
 
             // Fallback to the real Enum.Parse
-            return (Enum)Enum.Parse(Type, input);
+            return (T)Enum.Parse(Type, input);
         }
 
-        public override Optional<Enum> TryParse(string input)
+        public override T? TryParse(string input)
         {
             // First try to get the fields with EnumMemberAttribute
             if (input != null && EnumStrings.ContainsKey(input))
@@ -59,7 +60,7 @@ namespace Narochno.Primitives.Parsing.Parsers
                 }
             }
 
-            return new Optional<Enum>();
+            return null;
         }
     }
 }

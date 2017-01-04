@@ -51,40 +51,5 @@ namespace Narochno.Primitives.Tests
 
             Assert.Null(result.Unwrap());
         }
-
-        [Fact]
-        public void TestUnwrapStruct()
-        {
-            var original = 1;
-
-            var missing = original.Optional();
-
-            Assert.Equal<int>(original, missing.Unwrap());
-        }
-
-        [Fact]
-        public void TestUnwrapMissingStruct()
-        {
-            var result = new Optional<Guid>();
-
-            Assert.Equal<Guid>(Guid.Empty, result.Unwrap());
-        }
-
-        [Fact]
-        public void ToNullableMissingTest()
-        {
-            var original = new Optional<int>().Nullable();
-
-            Assert.False(original.HasValue);
-        }
-
-        [Fact]
-        public void ToNillableTest()
-        {
-            var original = 1.Optional().Nullable();
-
-            Assert.True(original.HasValue);
-            Assert.Equal(1, original.Value);
-        }
     }
 }

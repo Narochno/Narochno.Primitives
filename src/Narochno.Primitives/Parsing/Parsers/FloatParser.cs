@@ -4,7 +4,7 @@
     {
         public override float Parse(string input) => float.Parse(input);
 
-        public override Optional<float> TryParse(string input)
+        public override float? TryParse(string input)
         {
             float result;
             if (float.TryParse(input, out result))
@@ -12,7 +12,7 @@
                 return result;
             }
 
-            return new Optional<float>();
+            return null;
         }
     }
 }

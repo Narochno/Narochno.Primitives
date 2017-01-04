@@ -4,7 +4,7 @@
     {
         public override uint Parse(string input) => uint.Parse(input);
 
-        public override Optional<uint> TryParse(string input)
+        public override uint? TryParse(string input)
         {
             uint result;
             if (uint.TryParse(input, out result))
@@ -12,7 +12,7 @@
                 return result;
             }
 
-            return new Optional<uint>();
+            return null;
         }
     }
 }

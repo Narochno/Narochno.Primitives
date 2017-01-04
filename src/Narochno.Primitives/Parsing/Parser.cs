@@ -5,9 +5,10 @@
     /// </summary>
     /// <typeparam name="TType">The type this class will parse</typeparam>
     public abstract class Parser<TType> : IParser
+        where TType : struct 
     {
         object IParser.Parse(string input) => Parse(input);
-        IOptional IParser.TryParse(string input) => TryParse(input);
+        object IParser.TryParse(string input) => TryParse(input);
 
         /// <summary>
         /// Convert from <paramref name="input"/> to the type <typeparamref name="TType"/>
@@ -23,6 +24,6 @@
         /// </summary>
         /// <param name="input">The input string to convert from</param>
         /// <returns>An <see cref="Optional{TType}" /></returns>
-        public abstract Optional<TType> TryParse(string input);
+        public abstract TType? TryParse(string input);
     }
 }

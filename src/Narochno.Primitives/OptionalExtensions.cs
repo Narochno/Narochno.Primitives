@@ -15,13 +15,9 @@
         }
 
         public static TType Unwrap<TType>(this Optional<TType> value)
+            where TType : class
         {
             return value.IsSet ? value.Value : default(TType);
-        }
-
-        public static TType? Nullable<TType>(this Optional<TType> value) where TType : struct
-        {
-            return value.IsSet ? value.Value : (TType?)null;
         }
     }
 }
