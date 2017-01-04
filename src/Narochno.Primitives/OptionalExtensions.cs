@@ -11,13 +11,13 @@
         public static Optional<TType> Fallback<TType>(this Optional<TType> value, Optional<TType> fallback)
             where TType : class
         {
-            return value.IsSet ? value.Value : fallback;
+            return value.HasValue ? value.Value : fallback;
         }
 
         public static TType Unwrap<TType>(this Optional<TType> value)
             where TType : class
         {
-            return value.IsSet ? value.Value : default(TType);
+            return value.HasValue ? value.Value : default(TType);
         }
     }
 }

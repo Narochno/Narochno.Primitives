@@ -10,7 +10,7 @@ namespace Narochno.Primitives.Tests
         {
             var optional = "test".Optional();
 
-            Assert.True(optional.IsSet);
+            Assert.True(optional.HasValue);
             Assert.Equal("test", optional.Value);
         }
 
@@ -20,7 +20,7 @@ namespace Narochno.Primitives.Tests
             var missing = new Optional<string>();
 
             var result = missing.Fallback("fallback");
-            Assert.True(result.IsSet);
+            Assert.True(result.HasValue);
             Assert.Equal("fallback", result.Value);
         }
 
@@ -30,7 +30,7 @@ namespace Narochno.Primitives.Tests
             var existing = "test".Optional();
 
             var result = existing.Fallback("fallback");
-            Assert.True(result.IsSet);
+            Assert.True(result.HasValue);
             Assert.Equal("test", result.Value);
         }
 
