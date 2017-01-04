@@ -8,7 +8,7 @@ namespace Narochno.Primitives.Json.Tests
         class TestClass
         {
             public Optional<string> String { get; set; }
-            public Optional<int> Integer { get; set; }
+            public int? Integer { get; set; }
         }
 
         class TestClassComplex

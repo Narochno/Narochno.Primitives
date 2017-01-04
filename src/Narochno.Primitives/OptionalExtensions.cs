@@ -3,11 +3,13 @@
     public static class OptionalExtensions
     {
         public static Optional<TType> Optional<TType>(this TType value)
+            where TType : class
         {
             return new Optional<TType>(value);
         }
 
         public static Optional<TType> Fallback<TType>(this Optional<TType> value, Optional<TType> fallback)
+            where TType : class
         {
             if (value.IsSet)
             {

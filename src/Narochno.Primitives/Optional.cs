@@ -3,12 +3,13 @@
 namespace Narochno.Primitives
 {
     public struct Optional<TValue> : IOptional
+        where TValue : class
     {
         private readonly TValue value;
 
         public Optional(TValue value)
         {
-            IsSet = true;
+            IsSet = value != null;
             this.value = value;
         }
 

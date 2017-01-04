@@ -14,15 +14,6 @@ namespace Narochno.Primitives.Tests
         }
 
         [Fact]
-        public void TestStructToOptional()
-        {
-            var optional = 42.Optional();
-
-            Assert.True(optional.IsSet);
-            Assert.Equal(42, optional.Value);
-        }
-
-        [Fact]
         public void TestFallback()
         {
             var missing = new Optional<string>();
