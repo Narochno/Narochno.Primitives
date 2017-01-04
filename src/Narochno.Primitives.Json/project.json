@@ -1,22 +1,22 @@
 ﻿{
-  "version": "1.4.0",
+    "version": "2.0.0",
 
-  "authors": [ "alanedwardes" ],
+    "authors": [ "alanedwardes", "adamhathcock" ],
 
-  "packOptions": {
-    "tags": [ "primitives" ],
-    "projectUrl": "https://github.com/Narochno/Narochno.Primitives"
-  },
+    "packOptions": {
+        "tags": [ "primitives" ],
+        "projectUrl": "https://github.com/Narochno/Narochno.Primitives"
+    },
 
-  "dependencies": {
-    "Newtonsoft.Json": "9.0.1",
-    "Narochno.Primitives": { "target": "project" }
-  },
+    "dependencies": {
+        "Newtonsoft.Json": "9.0.1",
+        "Narochno.Primitives": { "target": "project" }
+    },
 
-  "frameworks": {
-    "netstandard1.3": {
-      "dependencies": {
-      }
+    "frameworks": {
+        "netstandard1.3": {
+            "dependencies": {
+            }
+        }
     }
-  }
 }
