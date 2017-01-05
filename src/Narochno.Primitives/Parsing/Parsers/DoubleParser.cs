@@ -4,7 +4,7 @@
     {
         public override double Parse(string input) => double.Parse(input);
 
-        public override Optional<double> TryParse(string input)
+        public override double? TryParse(string input)
         {
             double result;
             if (double.TryParse(input, out result))
@@ -12,7 +12,7 @@
                 return result;
             }
 
-            return new Optional<double>();
+            return null;
         }
     }
 }

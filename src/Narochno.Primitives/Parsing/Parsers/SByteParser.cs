@@ -4,7 +4,7 @@
     {
         public override sbyte Parse(string input) => sbyte.Parse(input);
 
-        public override Optional<sbyte> TryParse(string input)
+        public override sbyte? TryParse(string input)
         {
             sbyte result;
             if (sbyte.TryParse(input, out result))
@@ -12,7 +12,7 @@
                 return result;
             }
 
-            return new Optional<sbyte>();
+            return null;
         }
     }
 }

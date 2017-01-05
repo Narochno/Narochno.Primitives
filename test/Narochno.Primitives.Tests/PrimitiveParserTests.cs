@@ -5,6 +5,10 @@ namespace Narochno.Primitives.Parsing.Tests
 {
     public class PrimitiveParserTests
     {
+        public struct MyStruct
+        {
+            
+        }
         [Theory]
         [InlineData(typeof(bool), "true", true)]
         [InlineData(typeof(bool), "false", false)]
@@ -33,7 +37,7 @@ namespace Narochno.Primitives.Parsing.Tests
         public void Parse(Type type, string input, object expected)
         {
             Assert.Equal(expected, input.Parse(type));
-            Assert.Equal(expected, input.TryParse(type).Value);
+            Assert.Equal(expected, input.TryParse(type));
         }
 
         [Fact]
@@ -46,8 +50,8 @@ namespace Narochno.Primitives.Parsing.Tests
         [Fact]
         public void UnknownType()
         {
-            Assert.Throws<ArgumentException>(() => "test".Parse<PrimitiveParserTests>());
-            Assert.Throws<ArgumentException>(() => "test".TryParse<PrimitiveParserTests>());
+            Assert.Throws<ArgumentException>(() => "test".Parse<MyStruct>());
+            Assert.Throws<ArgumentException>(() => "test".TryParse<MyStruct>());
         }
     }
 }

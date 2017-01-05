@@ -2,8 +2,8 @@
 {
     public interface IOptional
     {
-        bool IsSet { get; }
-        bool NotSet { get; }
+        bool HasValue { get; }
+        bool HasNoValue { get; }
         object Value { get; }
     }
 }

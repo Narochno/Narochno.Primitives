@@ -3,12 +3,13 @@
 namespace Narochno.Primitives
 {
     public struct Optional<TValue> : IOptional
+        where TValue : class
     {
         private readonly TValue value;
 
         public Optional(TValue value)
         {
-            IsSet = true;
+            HasValue = value != null;
             this.value = value;
         }
 
@@ -16,7 +17,7 @@ namespace Narochno.Primitives
         {
             get
             {
-                if (NotSet)
+                if (HasNoValue)
                 {
                     throw new InvalidOperationException($"Optional<{typeof(TValue).Name}> is not set");
                 }
@@ -25,8 +26,8 @@ namespace Narochno.Primitives
             }
         }
 
-        public bool NotSet => !IsSet;
-        public bool IsSet { get; }
+        public bool HasNoValue => !HasValue;
+        public bool HasValue { get; }
         object IOptional.Value => Value;
 
         public override string ToString() => value?.ToString() ?? "Not Set";

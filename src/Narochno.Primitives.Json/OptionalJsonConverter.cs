@@ -21,7 +21,7 @@ namespace Narochno.Primitives.Json
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             var optional = value as IOptional;
-            serializer.Serialize(writer, optional.IsSet ? optional.Value : null);
+            serializer.Serialize(writer, optional.HasValue ? optional.Value : null);
         }
     }
 }

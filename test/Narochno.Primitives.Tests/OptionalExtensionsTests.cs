@@ -10,17 +10,8 @@ namespace Narochno.Primitives.Tests
         {
             var optional = "test".Optional();
 
-            Assert.True(optional.IsSet);
+            Assert.True(optional.HasValue);
             Assert.Equal("test", optional.Value);
-        }
-
-        [Fact]
-        public void TestStructToOptional()
-        {
-            var optional = 42.Optional();
-
-            Assert.True(optional.IsSet);
-            Assert.Equal(42, optional.Value);
         }
 
         [Fact]
@@ -29,7 +20,7 @@ namespace Narochno.Primitives.Tests
             var missing = new Optional<string>();
 
             var result = missing.Fallback("fallback");
-            Assert.True(result.IsSet);
+            Assert.True(result.HasValue);
             Assert.Equal("fallback", result.Value);
         }
 
@@ -39,7 +30,7 @@ namespace Narochno.Primitives.Tests
             var existing = "test".Optional();
 
             var result = existing.Fallback("fallback");
-            Assert.True(result.IsSet);
+            Assert.True(result.HasValue);
             Assert.Equal("test", result.Value);
         }
 
@@ -59,41 +50,6 @@ namespace Narochno.Primitives.Tests
             var result = new Optional<string>();
 
             Assert.Null(result.Unwrap());
-        }
-
-        [Fact]
-        public void TestUnwrapStruct()
-        {
-            var original = 1;
-
-            var missing = original.Optional();
-
-            Assert.Equal<int>(original, missing.Unwrap());
-        }
-
-        [Fact]
-        public void TestUnwrapMissingStruct()
-        {
-            var result = new Optional<Guid>();
-
-            Assert.Equal<Guid>(Guid.Empty, result.Unwrap());
-        }
-
-        [Fact]
-        public void ToNullableMissingTest()
-        {
-            var original = new Optional<int>().Nullable();
-
-            Assert.False(original.HasValue);
-        }
-
-        [Fact]
-        public void ToNillableTest()
-        {
-            var original = 1.Optional().Nullable();
-
-            Assert.True(original.HasValue);
-            Assert.Equal(1, original.Value);
         }
     }
 }

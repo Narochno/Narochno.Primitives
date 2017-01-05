@@ -6,14 +6,13 @@ namespace Narochno.Primitives.Tests
     public class OptionalTests
     {
         class TestClass { public override string ToString() => "test class"; }
-        struct TestStruct { public override string ToString() => "test struct"; }
 
         [Fact]
-        public void TestOptionalClassIsSet()
+        public void TestOptionalClassHasValue()
         {
             var test = new TestClass().Optional();
-            Assert.True(test.IsSet);
-            Assert.False(test.NotSet);
+            Assert.True(test.HasValue);
+            Assert.False(test.HasNoValue);
         }
 
         [Fact]
@@ -24,38 +23,22 @@ namespace Narochno.Primitives.Tests
         }
 
         [Fact]
-        public void TestOptionalStructIsSet()
-        {
-            var test = new TestStruct().Optional();
-            Assert.True(test.IsSet);
-            Assert.False(test.NotSet);
-        }
-
-        [Fact]
-        public void TestOptionalStructNotSet()
-        {
-            var test = new Optional<TestStruct>();
-            Assert.False(test.IsSet);
-            Assert.True(test.NotSet);
-        }
-
-        [Fact]
-        public void TestOptionalNotSetToString()
+        public void TestOptionalHasNoValueToString()
         {
             var test = new Optional<TestClass>();
             Assert.Equal("Not Set", test.ToString());
         }
 
         [Fact]
-        public void TestOptionalNotSet()
+        public void TestOptionalHasNoValue()
         {
             var test = new Optional<TestClass>();
-            Assert.False(test.IsSet);
-            Assert.True(test.NotSet);
+            Assert.False(test.HasValue);
+            Assert.True(test.HasNoValue);
         }
 
         [Fact]
-        public void TestOptionalNotSetValueException()
+        public void TestOptionalHasNoValueValueException()
         {
             var test = new Optional<TestClass>();
             Assert.Throws<InvalidOperationException>(() => test.Value);
@@ -68,10 +51,26 @@ namespace Narochno.Primitives.Tests
             // A method that accepts an optional
             new Action<Optional<TestClass>>(x =>
             {
-                Assert.True(x.IsSet);
-                Assert.False(x.NotSet);
+                Assert.True(x.HasValue);
+                Assert.False(x.HasNoValue);
                 Assert.Same(test, x.Value);
             })(test);
+        }
+
+        [Fact]
+        public void TestOptionalCastToValue()
+        {
+            var test = (Optional<TestClass>)new TestClass();
+            Assert.True(test.HasValue);
+            Assert.False(test.HasNoValue);
+        }
+
+        [Fact]
+        public void TestOptionalCastToNoValue()
+        {
+            var test = (Optional<TestClass>)null;
+            Assert.False(test.HasValue);
+            Assert.True(test.HasNoValue);
         }
     }
 }

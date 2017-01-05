@@ -58,9 +58,9 @@ namespace Narochno.Primitives.Parsing.Tests
         [Fact]
         public void TestParseInvalidToOptional()
         {
-            Assert.False("lol".TryParse<TestEnum>().IsSet);
-            Assert.False(string.Empty.TryParse<TestEnum>().IsSet);
-            Assert.False(((string)null).TryParse<TestEnum>().IsSet);
+            Assert.False("lol".TryParse<TestEnum>().HasValue);
+            Assert.False(string.Empty.TryParse<TestEnum>().HasValue);
+            Assert.False(((string)null).TryParse<TestEnum>().HasValue);
         }
     }
 }
