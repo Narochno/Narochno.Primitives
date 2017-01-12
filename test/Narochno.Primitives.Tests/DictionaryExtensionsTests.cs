@@ -13,7 +13,7 @@ namespace Narochno.Primitives.Tests
                 { "test", "testing" }
             };
 
-            Assert.Equal("testing", dict.GetOptional("test").Value);
+            Assert.Equal("testing", dict.GetObject("test").Value);
         }
 
         [Fact]
@@ -21,7 +21,7 @@ namespace Narochno.Primitives.Tests
         {
             var dict = new Dictionary<string, string>();
 
-            Assert.False(dict.GetOptional("test").HasValue);
+            Assert.False(dict.GetObject("test").HasValue);
         }
 
         [Fact]
@@ -32,7 +32,7 @@ namespace Narochno.Primitives.Tests
                 { "test", 1 }
             };
 
-            Assert.Equal(1, dict.GetNullable("test").Value);
+            Assert.Equal(1, dict.GetValue("test").Value);
         }
 
         [Fact]
@@ -40,7 +40,7 @@ namespace Narochno.Primitives.Tests
         {
             var dict = new Dictionary<string, int>();
 
-            Assert.False(dict.GetNullable("test").HasValue);
+            Assert.False(dict.GetValue("test").HasValue);
         }
     }
 }

@@ -4,7 +4,7 @@ namespace Narochno.Primitives
 {
     public static class DictionaryExtensions
     {
-        public static Optional<TValue> GetOptional<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key)
+        public static Optional<TValue> GetObject<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key)
             where TValue : class
         {
             if (!dictionary.ContainsKey(key))
@@ -15,7 +15,7 @@ namespace Narochno.Primitives
             return dictionary[key];
         }
 
-        public static TValue? GetNullable<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key)
+        public static TValue? GetValue<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key)
             where TValue : struct
         {
             if (!dictionary.ContainsKey(key))
