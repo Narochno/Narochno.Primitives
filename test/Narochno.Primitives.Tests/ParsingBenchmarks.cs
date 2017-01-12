@@ -18,7 +18,7 @@ namespace Narochno.Primitives.Tests
         /// </summary>
         private const int Iterations = 10000000;
 
-        [Fact]
+        [Fact(Skip = "Skipping Benchmarks")]
         public void GenericBoolParse()
         {
             for (var i = 0; i < Iterations; i++)
@@ -27,7 +27,7 @@ namespace Narochno.Primitives.Tests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Skipping Benchmarks")]
         public void TypedBoolParse()
         {
             for (var i = 0; i < Iterations; i++)
@@ -36,7 +36,7 @@ namespace Narochno.Primitives.Tests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Skipping Benchmarks")]
         public void GenericBoolTryParse()
         {
             for (var i = 0; i < Iterations; i++)
@@ -45,7 +45,7 @@ namespace Narochno.Primitives.Tests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Skipping Benchmarks")]
         public void TypedBoolTryParse()
         {
             for (var i = 0; i < Iterations; i++)
@@ -56,7 +56,7 @@ namespace Narochno.Primitives.Tests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Skipping Benchmarks")]
         public void GenericEnumParse()
         {
             for (var i = 0; i < Iterations; i++)
@@ -65,7 +65,7 @@ namespace Narochno.Primitives.Tests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Skipping Benchmarks")]
         public void TypedEnumParse()
         {
             for (var i = 0; i < Iterations; i++)
@@ -74,7 +74,7 @@ namespace Narochno.Primitives.Tests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Skipping Benchmarks")]
         public void GenericEnumTryParse()
         {
             for (var i = 0; i < Iterations; i++)
@@ -83,7 +83,7 @@ namespace Narochno.Primitives.Tests
             }
         }
 
-        [Fact]
+        [Fact(Skip = "Skipping Benchmarks")]
         public void TypedEnumTryParse()
         {
             for (var i = 0; i < Iterations; i++)
