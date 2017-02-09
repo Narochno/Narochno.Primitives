@@ -19,7 +19,10 @@ namespace Narochno.Primitives
 
         public static IEnumerable<T> AsEnumerable<T>(this T item)
         {
-            yield return item;
+            if (item != null)
+            {
+                yield return item;
+            }
         }
 
         public static IEnumerable<IEnumerable<TSource>> Batch<TSource>(

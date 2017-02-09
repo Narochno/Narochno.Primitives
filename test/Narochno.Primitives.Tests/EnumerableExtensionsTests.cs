@@ -6,6 +6,22 @@ namespace Narochno.Primitives.Tests
     public class EnumerableExtensionsTests
     {
         [Fact]
+        public void TestAsEnumerable()
+        {
+            string x = null;
+            Assert.Equal(0, x.AsEnumerable().Count());
+
+            int y = 0;
+            Assert.Equal(1, y.AsEnumerable().Count());
+
+            y = 1;
+            Assert.Equal(1, y.AsEnumerable().Count());
+
+            int? z = null;
+            Assert.Equal(0, z.AsEnumerable().Count());
+        }
+
+        [Fact]
         public void TestFirstOrOptional()
         {
             var optional = "test".AsEnumerable().FirstOrOptional();
