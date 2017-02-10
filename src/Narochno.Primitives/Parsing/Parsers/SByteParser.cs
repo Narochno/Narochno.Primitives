@@ -1,4 +1,6 @@
-﻿namespace Narochno.Primitives.Parsing.Parsers
+﻿using System;
+
+namespace Narochno.Primitives.Parsing.Parsers
 {
     public class SByteParser : Parser<sbyte>
     {
@@ -13,6 +15,11 @@
             }
 
             return null;
+        }
+
+        public override string ToString(sbyte value)
+        {
+            return Convert.ToString(value);
         }
     }
 }

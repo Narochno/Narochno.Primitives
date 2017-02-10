@@ -1,4 +1,6 @@
-﻿namespace Narochno.Primitives.Parsing.Parsers
+﻿using System;
+
+namespace Narochno.Primitives.Parsing.Parsers
 {
     public class IntParser : Parser<int>
     {
@@ -13,6 +15,11 @@
             }
 
             return null;
+        }
+
+        public override string ToString(int value)
+        {
+            return Convert.ToString(value);
         }
     }
 }
