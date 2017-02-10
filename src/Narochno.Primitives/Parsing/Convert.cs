@@ -6,7 +6,21 @@ namespace Narochno.Primitives.Parsing
         where TType : struct
     {
 
-        private static IParser<TType> parser = (IParser<TType>)DefaultParserLibrary.Instance.GetParser(typeof(TType));
+        private static IParser<TType> parser;
+
+        static Convert()
+        {
+            Refresh();
+        }
+
+        /// <summary>
+        /// Refreshes the parser from the DefaultParserLibrary if it is changed.
+        /// </summary>
+        /// <exception cref="ArgumentNullException"></exception>
+        public static void Refresh()
+        {
+            parser = DefaultParserLibrary.Instance.GetParser(typeof(TType)) as IParser<TType>;
+        }
 
         /// <summary>
         /// Convert given string to Nullable <typeparamref name="TType"/>
