@@ -5,23 +5,6 @@ namespace Narochno.Primitives.Parsing
     public static class Convert<TType>
         where TType : struct
     {
-
-        private static IParser<TType> parser;
-
-        static Convert()
-        {
-            Refresh();
-        }
-
-        /// <summary>
-        /// Refreshes the parser from the DefaultParserLibrary if it is changed.
-        /// </summary>
-        /// <exception cref="ArgumentNullException"></exception>
-        public static void Refresh()
-        {
-            parser = DefaultParserLibrary.Instance.GetParser(typeof(TType)) as IParser<TType>;
-        }
-
         /// <summary>
         /// Convert given string to Nullable <typeparamref name="TType"/>
         /// </summary>
@@ -30,7 +13,7 @@ namespace Narochno.Primitives.Parsing
         /// <returns>The Nullable <typeparamref name="TType"/> parsed from the string <paramref name="input"/></returns>
         public static TType? TryParse(string input)
         {
-            return parser.TryParse(input);
+            return DefaultParserLibrary.Instance.GetParser<TType>().TryParse(input);
         }
 
         /// <summary>
@@ -41,7 +24,7 @@ namespace Narochno.Primitives.Parsing
         /// <returns>The type <typeparamref name="TType"/> parsed from the string <paramref name="input"/></returns>
         public static TType Parse(string input)
         {
-            return parser.Parse(input);
+            return DefaultParserLibrary.Instance.GetParser<TType>().Parse(input);
         }
 
         /// <summary>
@@ -52,7 +35,7 @@ namespace Narochno.Primitives.Parsing
         /// <returns>The type parsed from the string <paramref name="input"/></returns>
         public static string ToString(TType type)
         {
-            return parser.ToString(type);
+            return DefaultParserLibrary.Instance.GetParser<TType>().ToString(type);
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Narochno.Primitives.Parsing
             where TType : struct 
         {
             return DefaultParserLibrary.Instance.GetParser<TType>()
-                .TryParse<TType>(input);
+                .TryParse(input);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Narochno.Primitives.Parsing
             where TType : struct 
         {
             return DefaultParserLibrary.Instance.GetParser<TType>()
-                .Parse<TType>(input);
+                .Parse(input);
         }
 
         /// <summary>
