@@ -4,8 +4,8 @@
     /// The base class for all parsers
     /// </summary>
     /// <typeparam name="TType">The type this class will parse</typeparam>
-    public abstract class Parser<TType> : IParser
-        where TType : struct 
+    public abstract class Parser<TType> : IParser, IParser<TType>
+        where TType : struct
     {
         object IParser.Parse(string input) => Parse(input);
         object IParser.TryParse(string input) => TryParse(input);
@@ -25,5 +25,7 @@
         /// <param name="input">The input string to convert from</param>
         /// <returns>An <see cref="Optional{TType}" /></returns>
         public abstract TType? TryParse(string input);
+
+        public abstract string ToString(TType value);
     }
 }

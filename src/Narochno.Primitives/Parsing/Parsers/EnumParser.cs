@@ -10,6 +10,7 @@ namespace Narochno.Primitives.Parsing.Parsers
         public Type Type { get; }
         public List<T> Values { get; } = new List<T>();
         public IDictionary<string, T> EnumStrings { get; } = new Dictionary<string, T>();
+        public IDictionary<T, string> EnumStringsReverse { get; } = new Dictionary<T, string>();
 
         public EnumParser()
         {
@@ -26,6 +27,7 @@ namespace Narochno.Primitives.Parsing.Parsers
                     .GetCustomAttributes<EnumStringAttribute>())
                 {
                     EnumStrings.Add(attribute.Value, (T)value);
+                    EnumStringsReverse.Add((T)value, attribute.Value);
                 }
             }
         }
@@ -61,6 +63,11 @@ namespace Narochno.Primitives.Parsing.Parsers
             }
 
             return null;
+        }
+
+        public override string ToString(T value)
+        {
+            return EnumStringsReverse[value];
         }
     }
 }

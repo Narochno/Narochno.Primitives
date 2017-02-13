@@ -2,9 +2,10 @@
 {
     public static class ParserLibraryExtensions
     {
-        public static IParser GetParser<TType>(this IParserLibrary parserLibrary)
+        public static IParser<TType> GetParser<TType>(this IParserLibrary parserLibrary)
+            where TType : struct
         {
-            return parserLibrary.GetParser(typeof(TType));
+            return (IParser<TType>)parserLibrary.GetParser(typeof(TType));
         }
     }
 }

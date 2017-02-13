@@ -16,5 +16,10 @@ namespace Narochno.Primitives.Parsing.Parsers
 
             return null;
         }
+
+        public override string ToString(Guid value)
+        {
+            return Convert.ToString(value);
+        }
     }
 }
