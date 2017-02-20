@@ -20,7 +20,11 @@ namespace Narochno.Primitives.Json
 
         public override bool CanConvert(Type objectType)
         {
+#if PORTABLE40
+            return objectType.GetNullableUnderlyingType().IsEnum;
+#else
             return objectType.GetNullableUnderlyingType().GetTypeInfo().IsEnum;
+#endif
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)

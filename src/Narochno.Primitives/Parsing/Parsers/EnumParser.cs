@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 
 namespace Narochno.Primitives.Parsing.Parsers
@@ -24,7 +25,7 @@ namespace Narochno.Primitives.Parsing.Parsers
             foreach (var value in Values)
             {
                 foreach (var attribute in Type.GetField(Enum.GetName(Type, value))
-                    .GetCustomAttributes<EnumStringAttribute>())
+                    .GetCustomAttributes(false).OfType<EnumStringAttribute>())
                 {
                     EnumStrings.Add(attribute.Value, (T)value);
                     EnumStringsReverse.Add((T)value, attribute.Value);
@@ -41,7 +42,7 @@ namespace Narochno.Primitives.Parsing.Parsers
             }
 
             // Fallback to the real Enum.Parse
-            return (T)Enum.Parse(Type, input);
+            return (T)Enum.Parse(Type, input, true);
         }
 
         public override T? TryParse(string input)
