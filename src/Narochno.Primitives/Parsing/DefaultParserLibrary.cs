@@ -35,7 +35,11 @@ namespace Narochno.Primitives.Parsing
 
             // Enums need type information,
             // so each one gets a parser
+#if PORTABLE40
+            if (type.IsEnum)
+#else
             if (type.GetTypeInfo().IsEnum)
+#endif
             {
                 Parsers.Add(type, (IParser)Activator.CreateInstance(typeof(EnumParser<>).MakeGenericType(type)));
                 return Parsers[type];
