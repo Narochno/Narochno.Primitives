@@ -28,6 +28,28 @@ namespace Narochno.Primitives.Json.Tests
         };
 
         [Fact]
+        public void ExpectSerialiseEnumNoValue()
+        {
+            var result = JsonConvert.SerializeObject(new TestObject
+            {
+                Test = TestEnum.Three
+            }, serializerSettings);
+
+            Assert.Equal("{\"Test\":\"Three\"}", result);
+        }
+
+        [Fact]
+        public void ExpectSerialiseEnum()
+        {
+            var result = JsonConvert.SerializeObject(new TestObject
+            {
+                Test = TestEnum.Two
+            }, serializerSettings);
+
+            Assert.Equal("{\"Test\":\"Second\"}", result);
+        }
+
+        [Fact]
         public void ExpectDeserialiseEnum()
         {
             var result = JsonConvert.DeserializeObject<TestObject>("{\"Test\":\"Second\"}", serializerSettings);

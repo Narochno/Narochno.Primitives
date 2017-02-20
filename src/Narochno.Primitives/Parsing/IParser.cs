@@ -21,6 +21,8 @@
         /// <param name="input">The input string to convert from</param>
         /// <returns>An <see cref="Optional{TType}" /></returns>
         object Parse(string input);
+
+        string ToString(object input);
     }
 
     public interface IParser<TType>

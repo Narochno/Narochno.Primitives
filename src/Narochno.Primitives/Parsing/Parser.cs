@@ -9,6 +9,7 @@
     {
         object IParser.Parse(string input) => Parse(input);
         object IParser.TryParse(string input) => TryParse(input);
+        string IParser.ToString(object input) => ToString((TType)input);
 
         /// <summary>
         /// Convert from <paramref name="input"/> to the type <typeparamref name="TType"/>

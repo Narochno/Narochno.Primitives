@@ -67,7 +67,12 @@ namespace Narochno.Primitives.Parsing.Parsers
 
         public override string ToString(T value)
         {
-            return EnumStringsReverse[value];
+            string s;
+            if (EnumStringsReverse.TryGetValue(value, out s))
+            {
+                return s;
+            }
+            return value.ToString();
         }
     }
 }

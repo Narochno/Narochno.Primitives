@@ -35,7 +35,7 @@ namespace Narochno.Primitives.Json
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            throw new NotImplementedException();
-        }
+            var parser = parserLibrary.GetParser(value.GetType());
+            writer.WriteValue(parser.ToString(value));        }
     }
 }
