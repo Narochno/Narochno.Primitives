@@ -1,10 +1,14 @@
 {
-    "version": "2.6.2",
+    "version": "2.6.3",
+	
+    "name": "Narochno.Primitives",
     "authors": [ "alanedwardes", "adamhathcock" ],
-
+    "description": "Classes designed to make working with C# code easier.",
     "packOptions": {
-        "tags": [ "primitives" ],
-        "projectUrl": "https://github.com/Narochno/Narochno.Primitives"
+	    "tags": [ "csharp", "primitives", "netcore" ],
+        "summary": "Classes designed to make working with C# code easier.",
+	    "projectUrl": "https://github.com/Narochno/Narochno.Primitives",
+		"iconUrl": "https://avatars.githubusercontent.com/u/24652538"
     },
 
     "dependencies": {
