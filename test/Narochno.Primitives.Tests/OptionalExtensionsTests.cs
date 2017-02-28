@@ -15,13 +15,33 @@ namespace Narochno.Primitives.Tests
         }
 
         [Fact]
+        public void TestFallbackOptional()
+        {
+            var missing = new Optional<string>();
+
+            var result = missing.Fallback("fallback".Optional());
+            Assert.True(result.HasValue);
+            Assert.Equal("fallback", result.Value);
+        }
+
+        [Fact]
         public void TestFallback()
         {
             var missing = new Optional<string>();
 
             var result = missing.Fallback("fallback");
+            Assert.NotNull(result);
+            Assert.Equal("fallback", result);
+        }
+
+        [Fact]
+        public void TestNoFallbackOptional()
+        {
+            var existing = "test".Optional();
+
+            var result = existing.Fallback("fallback".Optional());
             Assert.True(result.HasValue);
-            Assert.Equal("fallback", result.Value);
+            Assert.Equal("test", result.Value);
         }
 
         [Fact]
@@ -30,8 +50,8 @@ namespace Narochno.Primitives.Tests
             var existing = "test".Optional();
 
             var result = existing.Fallback("fallback");
-            Assert.True(result.HasValue);
-            Assert.Equal("test", result.Value);
+            Assert.NotNull(result);
+            Assert.Equal("test", result);
         }
 
         [Fact]

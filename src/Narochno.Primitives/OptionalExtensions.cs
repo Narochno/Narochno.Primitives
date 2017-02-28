@@ -14,6 +14,12 @@
             return value.HasValue ? value.Value : fallback;
         }
 
+        public static TType Fallback<TType>(this Optional<TType> value, TType fallback)
+            where TType : class
+        {
+            return value.HasValue ? value.Value : fallback;
+        }
+
         public static TType Unwrap<TType>(this Optional<TType> value)
             where TType : class
         {
