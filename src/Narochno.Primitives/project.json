@@ -1,5 +1,5 @@
 {
-    "version": "2.6.4",
+    "version": "2.6.6",
 
     "name": "Narochno.Primitives",
     "authors": [ "alanedwardes", "adamhathcock" ],
@@ -12,6 +12,8 @@
     },
 
     "frameworks": {
+        "net45": {
+        },
         "netstandard1.3": {
             "dependencies": {
                 "System.Collections": "4.3.0",

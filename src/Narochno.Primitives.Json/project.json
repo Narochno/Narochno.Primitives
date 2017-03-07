@@ -1,5 +1,6 @@
 {
-    "version": "2.6.4",
+    "version": "2.6.6",
+
     "name": "Narochno.Primitives.Json",
     
     "authors": [ "alanedwardes", "adamhathcock" ],
@@ -17,9 +18,9 @@
     },
 
     "frameworks": {
+        "net45": {
+        },
         "netstandard1.3": {
-            "dependencies": {
-            }
         },
         ".NETPortable,Version=v4.0,Profile=Profile328": {
             "buildOptions": {
