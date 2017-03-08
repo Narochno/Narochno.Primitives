@@ -26,26 +26,31 @@ namespace Narochno.Primitives.Parsing
             { typeof(ushort), new UShortParser() }
         };
 
+        private readonly object parserLock = new object();
+
         public IParser GetParser(Type type)
         {
-            if (Parsers.ContainsKey(type))
+            lock (parserLock)
             {
-                return Parsers[type];
-            }
+                if (Parsers.ContainsKey(type))
+                {
+                    return Parsers[type];
+                }
 
-            // Enums need type information,
-            // so each one gets a parser
+                // Enums need type information,
+                // so each one gets a parser
 #if PORTABLE40
-            if (type.IsEnum)
+                if (type.IsEnum)
 #else
-            if (type.GetTypeInfo().IsEnum)
+                if (type.GetTypeInfo().IsEnum)
 #endif
-            {
-                Parsers.Add(type, (IParser)Activator.CreateInstance(typeof(EnumParser<>).MakeGenericType(type)));
-                return Parsers[type];
-            }
+                {
+                    Parsers.Add(type, (IParser) Activator.CreateInstance(typeof(EnumParser<>).MakeGenericType(type)));
+                    return Parsers[type];
+                }
 
-            throw new ArgumentException($"Unable to find parser for {type.FullName}");
+                throw new ArgumentException($"Unable to find parser for {type.FullName}");
+            }
         }
     }
 }
