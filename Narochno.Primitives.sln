@@ -1,26 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.4
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Narochno.Primitives", "src\Narochno.Primitives\Narochno.Primitives.xproj", "{80A395AE-04D4-4136-9260-7EAA349C9DBE}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{ABDEED39-788F-40D3-BA03-4AA832032F5C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{88C95484-CA70-4839-AB35-2CFAC608D15D}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{9704B779-8E42-416A-8A01-0C565C3A67ED}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{DA1C05C2-7433-4DCC-9074-7C4145AA1710}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Narochno.Primitives", "src\Narochno.Primitives\Narochno.Primitives.csproj", "{4135670E-5917-4819-AD2C-A80BB63D6404}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{14952184-FE56-4378-BC7D-339462720085}"
-	ProjectSection(SolutionItems) = preProject
-		appveyor.yml = appveyor.yml
-		global.json = global.json
-		README.md = README.md
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Narochno.Primitives.Json", "src\Narochno.Primitives.Json\Narochno.Primitives.Json.csproj", "{50011B6F-C59A-4F52-B196-FDAE2742BABF}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Narochno.Primitives.Tests", "test\Narochno.Primitives.Tests\Narochno.Primitives.Tests.xproj", "{CBFF5E54-650F-4D9E-83A5-40238428EDB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Narochno.Primitives.Tests", "test\Narochno.Primitives.Tests\Narochno.Primitives.Tests.csproj", "{CF0A9D88-E03D-45EB-9A38-0A77B546E409}"
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Narochno.Primitives.Json", "src\Narochno.Primitives.Json\Narochno.Primitives.Json.xproj", "{94E71F7B-9325-450D-AA11-B08F0174D635}"
-EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Narochno.Primitives.Json.Tests", "test\Narochno.Primitives.Json.Tests\Narochno.Primitives.Json.Tests.xproj", "{B03DA370-7CCA-443F-80C1-5822210864DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Narochno.Primitives.Json.Tests", "test\Narochno.Primitives.Json.Tests\Narochno.Primitives.Json.Tests.csproj", "{E04F8B42-125C-4362-93A4-0B2E57112AA6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -28,30 +21,30 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{80A395AE-04D4-4136-9260-7EAA349C9DBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{80A395AE-04D4-4136-9260-7EAA349C9DBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{80A395AE-04D4-4136-9260-7EAA349C9DBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{80A395AE-04D4-4136-9260-7EAA349C9DBE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CBFF5E54-650F-4D9E-83A5-40238428EDB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CBFF5E54-650F-4D9E-83A5-40238428EDB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CBFF5E54-650F-4D9E-83A5-40238428EDB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CBFF5E54-650F-4D9E-83A5-40238428EDB0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{94E71F7B-9325-450D-AA11-B08F0174D635}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{94E71F7B-9325-450D-AA11-B08F0174D635}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{94E71F7B-9325-450D-AA11-B08F0174D635}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{94E71F7B-9325-450D-AA11-B08F0174D635}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B03DA370-7CCA-443F-80C1-5822210864DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B03DA370-7CCA-443F-80C1-5822210864DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B03DA370-7CCA-443F-80C1-5822210864DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B03DA370-7CCA-443F-80C1-5822210864DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4135670E-5917-4819-AD2C-A80BB63D6404}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4135670E-5917-4819-AD2C-A80BB63D6404}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4135670E-5917-4819-AD2C-A80BB63D6404}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4135670E-5917-4819-AD2C-A80BB63D6404}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50011B6F-C59A-4F52-B196-FDAE2742BABF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50011B6F-C59A-4F52-B196-FDAE2742BABF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50011B6F-C59A-4F52-B196-FDAE2742BABF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50011B6F-C59A-4F52-B196-FDAE2742BABF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF0A9D88-E03D-45EB-9A38-0A77B546E409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF0A9D88-E03D-45EB-9A38-0A77B546E409}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF0A9D88-E03D-45EB-9A38-0A77B546E409}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF0A9D88-E03D-45EB-9A38-0A77B546E409}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E04F8B42-125C-4362-93A4-0B2E57112AA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E04F8B42-125C-4362-93A4-0B2E57112AA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E04F8B42-125C-4362-93A4-0B2E57112AA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E04F8B42-125C-4362-93A4-0B2E57112AA6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{80A395AE-04D4-4136-9260-7EAA349C9DBE} = {88C95484-CA70-4839-AB35-2CFAC608D15D}
-		{CBFF5E54-650F-4D9E-83A5-40238428EDB0} = {DA1C05C2-7433-4DCC-9074-7C4145AA1710}
-		{94E71F7B-9325-450D-AA11-B08F0174D635} = {88C95484-CA70-4839-AB35-2CFAC608D15D}
-		{B03DA370-7CCA-443F-80C1-5822210864DA} = {DA1C05C2-7433-4DCC-9074-7C4145AA1710}
+		{4135670E-5917-4819-AD2C-A80BB63D6404} = {ABDEED39-788F-40D3-BA03-4AA832032F5C}
+		{50011B6F-C59A-4F52-B196-FDAE2742BABF} = {ABDEED39-788F-40D3-BA03-4AA832032F5C}
+		{CF0A9D88-E03D-45EB-9A38-0A77B546E409} = {9704B779-8E42-416A-8A01-0C565C3A67ED}
+		{E04F8B42-125C-4362-93A4-0B2E57112AA6} = {9704B779-8E42-416A-8A01-0C565C3A67ED}
 	EndGlobalSection
 EndGlobal

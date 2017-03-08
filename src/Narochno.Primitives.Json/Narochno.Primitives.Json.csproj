@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <Description>Classes designed to make working with C# code easier.</Description>
+    <VersionPrefix>2.6.6</VersionPrefix>
+    <Authors>alanedwardes;adamhathcock</Authors>
+    <TargetFrameworks>net45;netstandard1.3;portable40-net40+sl5+win8+wp8+wpa81</TargetFrameworks>
+    <AssemblyName>Narochno.Primitives.Json</AssemblyName>
+    <PackageId>Narochno.Primitives.Json</PackageId>
+    <PackageTags>csharp;primitives;netcore</PackageTags>
+    <PackageIconUrl>https://avatars.githubusercontent.com/u/24652538</PackageIconUrl>
+    <PackageProjectUrl>https://github.com/Narochno/Narochno.Primitives</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Narochno.Primitives\Narochno.Primitives.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
+  </ItemGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+    <Reference Include="System" />
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'portable40-net40+sl5+win8+wp8+wpa81' ">
+    <DefineConstants>$(DefineConstants);PORTABLE40</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'portable40-net40+sl5+win8+wp8+wpa81' ">
+    <Reference Include="mscorlib" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+
+</Project>
