@@ -19,8 +19,8 @@ after_build:
 - dotnet pack "src\Narochno.Primitives.Json" -c Release
 
 test_script:
-- dotnet test "test\Narochno.Primitives.Tests" -c Release
-- dotnet test "test\Narochno.Primitives.Json.Tests" -c Release
+- dotnet test "test\Narochno.Primitives.Tests\Narochno.Primitives.Tests.csproj"
+- dotnet test "test\Narochno.Primitives.Json.Tests\Narochno.Primitives.Json.Tests.csproj"
 
 artifacts:
 - path: src\Narochno.Primitives\bin\Release\*.nupkg
