@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <Description>Classes designed to make working with C# code easier.</Description>
-    <VersionPrefix>2.6.6</VersionPrefix>
+    <VersionPrefix>2.6.7</VersionPrefix>
     <Authors>alanedwardes;adamhathcock</Authors>
     <TargetFrameworks>net45;netstandard1.3</TargetFrameworks>
     <AssemblyName>Narochno.Primitives</AssemblyName>
