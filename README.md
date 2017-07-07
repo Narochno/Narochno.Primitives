@@ -1,4 +1,4 @@
-# Narochno.Primitives [![Build status](https://ci.appveyor.com/api/projects/status/1kr4nilux2qt0kad/branch/master?svg=true)](https://ci.appveyor.com/project/Narochno/narochno-primitives/branch/master)
+# Narochno.Primitives [![Build status](https://ci.appveyor.com/api/projects/status/1kr4nilux2qt0kad/branch/master?svg=true)](https://ci.appveyor.com/project/Narochno/narochno-primitives/branch/master) [![NuGet](https://img.shields.io/nuget/v/Narochno.Primitives.svg)](https://www.nuget.org/packages/Narochno.Primitives/)
 
 Classes designed to make working with C# code easier.
 
