@@ -9,16 +9,16 @@ namespace Narochno.Primitives.Tests
         public void TestAsEnumerable()
         {
             string x = null;
-            Assert.Equal(0, x.AsEnumerable().Count());
+            Assert.Empty( x.AsEnumerable());
 
             int y = 0;
-            Assert.Equal(1, y.AsEnumerable().Count());
+            Assert.Single(y.AsEnumerable());
 
             y = 1;
-            Assert.Equal(1, y.AsEnumerable().Count());
+            Assert.Single(y.AsEnumerable());
 
             int? z = null;
-            Assert.Equal(0, z.AsEnumerable().Count());
+            Assert.Empty(z.AsEnumerable());
         }
 
         [Fact]

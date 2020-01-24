@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <Description>Classes designed to make working with C# code easier.</Description>
-    <VersionPrefix>3.0.0</VersionPrefix>
+    <VersionPrefix>3.0.1</VersionPrefix>
     <Authors>alanedwardes;adamhathcock</Authors>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Narochno.Primitives</AssemblyName>
     <PackageId>Narochno.Primitives</PackageId>
     <PackageTags>csharp;primitives;netcore</PackageTags>

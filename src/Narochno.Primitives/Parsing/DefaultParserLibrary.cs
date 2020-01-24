@@ -7,6 +7,7 @@ namespace Narochno.Primitives.Parsing
 {
     public class DefaultParserLibrary : IParserLibrary
     {
+        private static object lockObject = new object();
         public static IParserLibrary Instance { get; set; } = new DefaultParserLibrary();
 
         public IDictionary<Type, IParser> Parsers { get; } = new Dictionary<Type, IParser>
@@ -33,19 +34,27 @@ namespace Narochno.Primitives.Parsing
                 return Parsers[type];
             }
 
-            // Enums need type information,
-            // so each one gets a parser
+            lock (lockObject)
+            {
+                if (Parsers.ContainsKey(type))
+                {
+                    return Parsers[type];
+                }
+
+                // Enums need type information,
+                // so each one gets a parser
 #if PORTABLE40
             if (type.IsEnum)
 #else
-            if (type.GetTypeInfo().IsEnum)
+                if (type.GetTypeInfo().IsEnum)
 #endif
-            {
-                Parsers.Add(type, (IParser)Activator.CreateInstance(typeof(EnumParser<>).MakeGenericType(type)));
-                return Parsers[type];
-            }
+                {
+                    Parsers.Add(type, (IParser) Activator.CreateInstance(typeof(EnumParser<>).MakeGenericType(type)));
+                    return Parsers[type];
+                }
 
-            throw new ArgumentException($"Unable to find parser for {type.FullName}");
+                throw new ArgumentException($"Unable to find parser for {type.FullName}");
+            }
         }
     }
 }
