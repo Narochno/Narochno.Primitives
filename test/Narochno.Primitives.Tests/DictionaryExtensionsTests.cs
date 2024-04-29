@@ -5,14 +5,10 @@ namespace Narochno.Primitives.Tests
 {
     public class DictionaryExtensionsTests
     {
-
         [Fact]
         public void TestGetNullableExists()
         {
-            var dict = new Dictionary<string, int>
-            {
-                { "test", 1 }
-            };
+            var dict = new Dictionary<string, int> { { "test", 1 } };
 
             Assert.Equal(1, dict.GetValue("test").NotNull());
         }

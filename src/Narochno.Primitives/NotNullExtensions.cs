@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -10,16 +9,14 @@ namespace Narochno.Primitives;
 
 public static class NotNullExtensions
 {
-    public static IEnumerable<T> Empty<T>(this IEnumerable<T>? source) => source ?? Enumerable.Empty<T>();
+    public static IEnumerable<T> Empty<T>(this IEnumerable<T>? source) =>
+        source ?? Enumerable.Empty<T>();
+
 #if NET8_0
-    public static async Task<T> NotNull<T>(this Task<T?> task, [CallerArgumentExpression(nameof(task))] string? paramName = null)
-        where T : class
-    {
-        var x = await task;
-        ArgumentNullException.ThrowIfNull(x, paramName);
-        return x;
-    }
-    public static async ValueTask<T> NotNull<T>(this ValueTask<T?> task, [CallerArgumentExpression(nameof(task))] string? paramName = null)
+    public static async Task<T> NotNull<T>(
+        this Task<T?> task,
+        [CallerArgumentExpression(nameof(task))] string? paramName = null
+    )
         where T : class
     {
         var x = await task;
@@ -27,14 +24,21 @@ public static class NotNullExtensions
         return x;
     }
 
-    public static async Task<T> NotNull<T>(this Task<T?> task, [CallerArgumentExpression(nameof(task))] string? paramName = null)
-        where T : struct
+    public static async ValueTask<T> NotNull<T>(
+        this ValueTask<T?> task,
+        [CallerArgumentExpression(nameof(task))] string? paramName = null
+    )
+        where T : class
     {
         var x = await task;
         ArgumentNullException.ThrowIfNull(x, paramName);
-        return x.Value;
+        return x;
     }
-    public static async ValueTask<T> NotNull<T>(this ValueTask<T?> task, [CallerArgumentExpression(nameof(task))] string? paramName = null)
+
+    public static async Task<T> NotNull<T>(
+        this Task<T?> task,
+        [CallerArgumentExpression(nameof(task))] string? paramName = null
+    )
         where T : struct
     {
         var x = await task;
@@ -42,20 +46,37 @@ public static class NotNullExtensions
         return x.Value;
     }
 
-    public static T NotNull<T>([NotNull] this T? obj, [CallerArgumentExpression(nameof(obj))] string? paramName = null)
+    public static async ValueTask<T> NotNull<T>(
+        this ValueTask<T?> task,
+        [CallerArgumentExpression(nameof(task))] string? paramName = null
+    )
+        where T : struct
+    {
+        var x = await task;
+        ArgumentNullException.ThrowIfNull(x, paramName);
+        return x.Value;
+    }
+
+    public static T NotNull<T>(
+        [NotNull] this T? obj,
+        [CallerArgumentExpression(nameof(obj))] string? paramName = null
+    )
         where T : class
     {
         ArgumentNullException.ThrowIfNull(obj, paramName);
         return obj;
     }
 
-    public static T NotNull<T>([NotNull] this T? obj, [CallerArgumentExpression(nameof(obj))] string? paramName = null)
+    public static T NotNull<T>(
+        [NotNull] this T? obj,
+        [CallerArgumentExpression(nameof(obj))] string? paramName = null
+    )
         where T : struct
     {
         ArgumentNullException.ThrowIfNull(obj, paramName);
         return obj.Value;
     }
-    #else
+#else
 
     public static async Task<T> NotNull<T>(this Task<T?> task, string? message = null)
         where T : class
@@ -79,7 +100,7 @@ public static class NotNullExtensions
         return x.Value;
     }
 
-    public static T NotNull<T>(this T? obj,  string? message = null)
+    public static T NotNull<T>(this T? obj, string? message = null)
         where T : class
     {
         if (obj is null)
@@ -89,7 +110,7 @@ public static class NotNullExtensions
         return obj;
     }
 
-    public static T NotNull<T>(this T? obj,  string? message = null)
+    public static T NotNull<T>(this T? obj, string? message = null)
         where T : struct
     {
         if (obj is null)

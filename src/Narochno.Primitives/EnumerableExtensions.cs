@@ -14,7 +14,9 @@ namespace Narochno.Primitives
         }
 
         public static IEnumerable<IEnumerable<TSource>> Batch<TSource>(
-            this IEnumerable<TSource> source, int size)
+            this IEnumerable<TSource> source,
+            int size
+        )
         {
             TSource[]? bucket = null;
             var count = 0;

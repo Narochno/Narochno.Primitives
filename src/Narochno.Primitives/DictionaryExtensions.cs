@@ -4,7 +4,10 @@ namespace Narochno.Primitives
 {
     public static class DictionaryExtensions
     {
-        public static TValue? GetValue<TKey, TValue>(this IDictionary<TKey, TValue> dictionary, TKey key)
+        public static TValue? GetValue<TKey, TValue>(
+            this IDictionary<TKey, TValue> dictionary,
+            TKey key
+        )
             where TValue : struct
         {
             if (!dictionary.TryGetValue(key, out var value))

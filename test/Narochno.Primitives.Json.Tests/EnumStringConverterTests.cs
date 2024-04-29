@@ -1,6 +1,6 @@
-﻿using Narochno.Primitives.Parsing;
+﻿using System;
+using Narochno.Primitives.Parsing;
 using Newtonsoft.Json;
-using System;
 using Xunit;
 
 namespace Narochno.Primitives.Json.Tests
@@ -10,8 +10,10 @@ namespace Narochno.Primitives.Json.Tests
         enum TestEnum
         {
             Undefined,
+
             [EnumString("First")]
             One,
+
             [EnumString("Second")]
             Two,
             Three
@@ -30,10 +32,10 @@ namespace Narochno.Primitives.Json.Tests
         [Fact]
         public void ExpectSerialiseEnumNoValue()
         {
-            var result = JsonConvert.SerializeObject(new TestObject
-            {
-                Test = TestEnum.Three
-            }, serializerSettings);
+            var result = JsonConvert.SerializeObject(
+                new TestObject { Test = TestEnum.Three },
+                serializerSettings
+            );
 
             Assert.Equal("{\"Test\":\"Three\"}", result);
         }
@@ -41,10 +43,10 @@ namespace Narochno.Primitives.Json.Tests
         [Fact]
         public void ExpectSerialiseEnum()
         {
-            var result = JsonConvert.SerializeObject(new TestObject
-            {
-                Test = TestEnum.Two
-            }, serializerSettings);
+            var result = JsonConvert.SerializeObject(
+                new TestObject { Test = TestEnum.Two },
+                serializerSettings
+            );
 
             Assert.Equal("{\"Test\":\"Second\"}", result);
         }
@@ -52,7 +54,10 @@ namespace Narochno.Primitives.Json.Tests
         [Fact]
         public void ExpectDeserialiseEnum()
         {
-            var result = JsonConvert.DeserializeObject<TestObject>("{\"Test\":\"Second\"}", serializerSettings);
+            var result = JsonConvert.DeserializeObject<TestObject>(
+                "{\"Test\":\"Second\"}",
+                serializerSettings
+            );
 
             Assert.Equal(TestEnum.Two, result?.Test);
         }
@@ -60,7 +65,10 @@ namespace Narochno.Primitives.Json.Tests
         [Fact]
         public void ExpectDeserialiseUnknownEnumString()
         {
-            var result = JsonConvert.DeserializeObject<TestObject>("{\"Test\":\"Three\"}", serializerSettings);
+            var result = JsonConvert.DeserializeObject<TestObject>(
+                "{\"Test\":\"Three\"}",
+                serializerSettings
+            );
 
             Assert.Equal(TestEnum.Three, result?.Test);
         }
@@ -68,13 +76,25 @@ namespace Narochno.Primitives.Json.Tests
         [Fact]
         public void ExpectNotDeserialiseUnknownEnum()
         {
-            Assert.Throws<ArgumentException>(() => JsonConvert.DeserializeObject<TestObject>("{\"Test\":\"ok\"}", serializerSettings));
+            Assert.Throws<ArgumentException>(
+                () =>
+                    JsonConvert.DeserializeObject<TestObject>(
+                        "{\"Test\":\"ok\"}",
+                        serializerSettings
+                    )
+            );
         }
 
         [Fact]
         public void ExpectNotDeserialiseNullEnum()
         {
-            Assert.Throws<ArgumentNullException>(() => JsonConvert.DeserializeObject<TestObject>("{\"Test\": null}", serializerSettings));
+            Assert.Throws<ArgumentNullException>(
+                () =>
+                    JsonConvert.DeserializeObject<TestObject>(
+                        "{\"Test\": null}",
+                        serializerSettings
+                    )
+            );
         }
 
         class TestObjectNullable
@@ -85,7 +105,10 @@ namespace Narochno.Primitives.Json.Tests
         [Fact]
         public void ExpectDeserialiseNullableEnum()
         {
-            var result = JsonConvert.DeserializeObject<TestObjectNullable>("{\"Test\":\"Second\"}", serializerSettings);
+            var result = JsonConvert.DeserializeObject<TestObjectNullable>(
+                "{\"Test\":\"Second\"}",
+                serializerSettings
+            );
 
             Assert.Equal(TestEnum.Two, result?.Test);
         }
@@ -93,7 +116,10 @@ namespace Narochno.Primitives.Json.Tests
         [Fact]
         public void ExpectNotDeserialiseNullableEnum()
         {
-            var result = JsonConvert.DeserializeObject<TestObjectNullable>("{\"Test\": null}", serializerSettings);
+            var result = JsonConvert.DeserializeObject<TestObjectNullable>(
+                "{\"Test\": null}",
+                serializerSettings
+            );
         }
     }
 }

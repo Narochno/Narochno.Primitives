@@ -1,7 +1,7 @@
-﻿using Narochno.Primitives.Parsing.Parsers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Narochno.Primitives.Parsing.Parsers;
 
 namespace Narochno.Primitives.Parsing
 {
@@ -10,22 +10,23 @@ namespace Narochno.Primitives.Parsing
         private static object lockObject = new();
         public static IParserLibrary Instance { get; } = new DefaultParserLibrary();
 
-        public IDictionary<Type, IParser> Parsers { get; } = new Dictionary<Type, IParser>
-        {
-            { typeof(bool), new BoolParser() },
-            { typeof(char), new CharParser() },
-            { typeof(decimal), new DecimalParser() },
-            { typeof(double), new DoubleParser() },
-            { typeof(float), new FloatParser() },
-            { typeof(Guid), new GuidParser() },
-            { typeof(int), new IntParser() },
-            { typeof(long), new LongParser() },
-            { typeof(sbyte), new SByteParser() },
-            { typeof(short), new ShortParser() },
-            { typeof(uint), new UIntParser() },
-            { typeof(ulong), new ULongParser() },
-            { typeof(ushort), new UShortParser() }
-        };
+        public IDictionary<Type, IParser> Parsers { get; } =
+            new Dictionary<Type, IParser>
+            {
+                { typeof(bool), new BoolParser() },
+                { typeof(char), new CharParser() },
+                { typeof(decimal), new DecimalParser() },
+                { typeof(double), new DoubleParser() },
+                { typeof(float), new FloatParser() },
+                { typeof(Guid), new GuidParser() },
+                { typeof(int), new IntParser() },
+                { typeof(long), new LongParser() },
+                { typeof(sbyte), new SByteParser() },
+                { typeof(short), new ShortParser() },
+                { typeof(uint), new UIntParser() },
+                { typeof(ulong), new ULongParser() },
+                { typeof(ushort), new UShortParser() }
+            };
 
         public IParser GetParser(Type type)
         {
@@ -45,7 +46,13 @@ namespace Narochno.Primitives.Parsing
                 // so each one gets a parser
                 if (type.GetTypeInfo().IsEnum)
                 {
-                    Parsers.Add(type, (IParser) Activator.CreateInstance(typeof(EnumParser<>).MakeGenericType(type)).NotNull());
+                    Parsers.Add(
+                        type,
+                        (IParser)
+                            Activator
+                                .CreateInstance(typeof(EnumParser<>).MakeGenericType(type))
+                                .NotNull()
+                    );
                     return Parsers[type];
                 }
 

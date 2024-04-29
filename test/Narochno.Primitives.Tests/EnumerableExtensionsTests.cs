@@ -9,7 +9,7 @@ namespace Narochno.Primitives.Tests
         public void TestAsEnumerable()
         {
             string? x = null;
-            Assert.Empty( x.AsEnumerable());
+            Assert.Empty(x.AsEnumerable());
 
             int y = 0;
             Assert.Single(y.AsEnumerable());
@@ -21,12 +21,10 @@ namespace Narochno.Primitives.Tests
             Assert.Empty(z.AsEnumerable());
         }
 
-
-
         [Fact]
         public void TestBatch()
         {
-            var items = new[] {"a", "b", "c"};
+            var items = new[] { "a", "b", "c" };
 
             var batches = items.Batch(2).ToList();
 

@@ -1,5 +1,5 @@
-﻿using Narochno.Primitives.Parsing;
-using System;
+﻿using System;
+using Narochno.Primitives.Parsing;
 using Xunit;
 
 namespace Narochno.Primitives.Tests
@@ -70,7 +70,10 @@ namespace Narochno.Primitives.Tests
         {
             for (var i = 0; i < Iterations; i++)
             {
-                Assert.Equal(DateTimeKind.Utc, (DateTimeKind)Enum.Parse(typeof(DateTimeKind), "Utc"));
+                Assert.Equal(
+                    DateTimeKind.Utc,
+                    (DateTimeKind)Enum.Parse(typeof(DateTimeKind), "Utc")
+                );
             }
         }
 

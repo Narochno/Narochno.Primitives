@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Narochno.Primitives.Parsing.Parsers
 {
-    public class EnumParser<T>: Parser<T>
+    public class EnumParser<T> : Parser<T>
         where T : struct
     {
         public Type Type { get; }
@@ -23,8 +23,12 @@ namespace Narochno.Primitives.Parsing.Parsers
             // Cache this as it's expensive to fetch
             foreach (var value in Values)
             {
-                foreach (var attribute in Type.GetField(Enum.GetName(Type, value).NotNull()).NotNull()
-                    .GetCustomAttributes(false).OfType<EnumStringAttribute>())
+                foreach (
+                    var attribute in Type.GetField(Enum.GetName(Type, value).NotNull())
+                        .NotNull()
+                        .GetCustomAttributes(false)
+                        .OfType<EnumStringAttribute>()
+                )
                 {
                     EnumStrings.Add(attribute.Value, (T)value);
                     EnumStringsReverse.Add((T)value, attribute.Value);

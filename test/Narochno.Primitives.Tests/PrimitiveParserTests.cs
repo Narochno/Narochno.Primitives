@@ -5,10 +5,8 @@ namespace Narochno.Primitives.Parsing.Tests
 {
     public class PrimitiveParserTests
     {
-        public struct MyStruct
-        {
+        public struct MyStruct { }
 
-        }
         [Theory]
         [InlineData(typeof(bool), "true", true)]
         [InlineData(typeof(bool), "false", false)]
@@ -41,8 +39,14 @@ namespace Narochno.Primitives.Parsing.Tests
         [Fact]
         public void GuidToType()
         {
-            Assert.Equal(new Guid("433158F7-7B46-4E6D-8980-B5492D46F0DE"), "433158F7-7B46-4E6D-8980-B5492D46F0DE".Parse<Guid>());
-            Assert.Equal(new Guid("433158F7-7B46-4E6D-8980-B5492D46F0DE"), "433158F7-7B46-4E6D-8980-B5492D46F0DE".TryParse<Guid>().NotNull());
+            Assert.Equal(
+                new Guid("433158F7-7B46-4E6D-8980-B5492D46F0DE"),
+                "433158F7-7B46-4E6D-8980-B5492D46F0DE".Parse<Guid>()
+            );
+            Assert.Equal(
+                new Guid("433158F7-7B46-4E6D-8980-B5492D46F0DE"),
+                "433158F7-7B46-4E6D-8980-B5492D46F0DE".TryParse<Guid>().NotNull()
+            );
         }
 
         [Fact]

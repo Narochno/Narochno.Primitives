@@ -13,9 +13,10 @@ namespace Narochno.Primitives
 #else
         public static bool IsNullable(this Type type)
         {
-            return type.GetTypeInfo().IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>);
+            return type.GetTypeInfo().IsGenericType
+                && type.GetGenericTypeDefinition() == typeof(Nullable<>);
         }
-        #endif
+#endif
 
         public static Type? GetNullableUnderlyingType(this Type type)
         {

@@ -1,7 +1,7 @@
 ﻿using System;
-using Newtonsoft.Json;
 using System.Reflection;
 using Narochno.Primitives.Parsing;
+using Newtonsoft.Json;
 
 namespace Narochno.Primitives.Json
 {
@@ -9,9 +9,7 @@ namespace Narochno.Primitives.Json
     {
         private IParserLibrary parserLibrary = DefaultParserLibrary.Instance;
 
-        public EnumStringConverter()
-        {
-        }
+        public EnumStringConverter() { }
 
         public EnumStringConverter(IParserLibrary parserLibrary)
         {
@@ -23,19 +21,27 @@ namespace Narochno.Primitives.Json
             return objectType.GetNullableUnderlyingType().GetTypeInfo().IsEnum;
         }
 
-        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer)
+        public override object? ReadJson(
+            JsonReader reader,
+            Type objectType,
+            object? existingValue,
+            JsonSerializer serializer
+        )
         {
             if (objectType.IsNullable() && reader.Value == null)
             {
                 return existingValue;
             }
 
-            return parserLibrary.GetParser(objectType.GetNullableUnderlyingType().NotNull()).Parse(reader.Value.NotNull().ToString());
+            return parserLibrary
+                .GetParser(objectType.GetNullableUnderlyingType().NotNull())
+                .Parse(reader.Value.NotNull().ToString());
         }
 
         public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
         {
             var parser = parserLibrary.GetParser(value.NotNull().GetType().NotNull());
-            writer.WriteValue(parser.ToString(value.NotNull()));        }
+            writer.WriteValue(parser.ToString(value.NotNull()));
+        }
     }
 }

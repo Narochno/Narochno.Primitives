@@ -9,8 +9,10 @@ namespace Narochno.Primitives.Parsing.Tests
         {
             [EnumString("test_one")]
             One,
+
             [EnumString("test_two")]
             Two,
+
             [EnumString("test_three")]
             Three
         }
