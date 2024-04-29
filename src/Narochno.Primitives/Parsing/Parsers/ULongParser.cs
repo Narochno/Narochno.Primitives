@@ -1,25 +1,21 @@
 ﻿using System;
 
-namespace Narochno.Primitives.Parsing.Parsers
+namespace Narochno.Primitives.Parsing.Parsers;
+
+public class ULongParser : Parser<ulong>
 {
-    public class ULongParser : Parser<ulong>
+    public override ulong Parse(string input) => ulong.Parse(input);
+
+    public override ulong? TryParse(string input)
     {
-        public override ulong Parse(string input) => ulong.Parse(input);
-
-        public override ulong? TryParse(string input)
+        ulong result;
+        if (ulong.TryParse(input, out result))
         {
-            ulong result;
-            if (ulong.TryParse(input, out result))
-            {
-                return result;
-            }
-
-            return null;
+            return result;
         }
 
-        public override string ToString(ulong value)
-        {
-            return Convert.ToString(value);
-        }
+        return null;
     }
+
+    public override string ToString(ulong value) => Convert.ToString(value);
 }

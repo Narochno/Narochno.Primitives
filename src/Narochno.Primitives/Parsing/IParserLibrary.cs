@@ -1,9 +1,8 @@
 ﻿using System;
 
-namespace Narochno.Primitives.Parsing
+namespace Narochno.Primitives.Parsing;
+
+public interface IParserLibrary
 {
-    public interface IParserLibrary
-    {
-        IParser GetParser(Type type);
-    }
+    IParser GetParser(Type type);
 }

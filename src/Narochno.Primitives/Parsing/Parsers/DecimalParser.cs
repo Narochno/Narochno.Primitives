@@ -1,25 +1,21 @@
 ﻿using System;
 
-namespace Narochno.Primitives.Parsing.Parsers
+namespace Narochno.Primitives.Parsing.Parsers;
+
+public class DecimalParser : Parser<decimal>
 {
-    public class DecimalParser : Parser<decimal>
+    public override decimal Parse(string input) => decimal.Parse(input);
+
+    public override decimal? TryParse(string input)
     {
-        public override decimal Parse(string input) => decimal.Parse(input);
-
-        public override decimal? TryParse(string input)
+        decimal result;
+        if (decimal.TryParse(input, out result))
         {
-            decimal result;
-            if (decimal.TryParse(input, out result))
-            {
-                return result;
-            }
-
-            return null;
+            return result;
         }
 
-        public override string ToString(decimal value)
-        {
-            return Convert.ToString(value);
-        }
+        return null;
     }
+
+    public override string ToString(decimal value) => Convert.ToString(value);
 }

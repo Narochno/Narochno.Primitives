@@ -1,25 +1,21 @@
 ﻿using System;
 
-namespace Narochno.Primitives.Parsing.Parsers
+namespace Narochno.Primitives.Parsing.Parsers;
+
+public class ShortParser : Parser<short>
 {
-    public class ShortParser : Parser<short>
+    public override short Parse(string input) => short.Parse(input);
+
+    public override short? TryParse(string input)
     {
-        public override short Parse(string input) => short.Parse(input);
-
-        public override short? TryParse(string input)
+        short result;
+        if (short.TryParse(input, out result))
         {
-            short result;
-            if (short.TryParse(input, out result))
-            {
-                return result;
-            }
-
-            return null;
+            return result;
         }
 
-        public override string ToString(short value)
-        {
-            return Convert.ToString(value);
-        }
+        return null;
     }
+
+    public override string ToString(short value) => Convert.ToString(value);
 }

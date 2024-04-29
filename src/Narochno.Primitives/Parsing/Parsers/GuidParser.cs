@@ -1,25 +1,21 @@
 ﻿using System;
 
-namespace Narochno.Primitives.Parsing.Parsers
+namespace Narochno.Primitives.Parsing.Parsers;
+
+public class GuidParser : Parser<Guid>
 {
-    public class GuidParser : Parser<Guid>
+    public override Guid Parse(string input) => Guid.Parse(input);
+
+    public override Guid? TryParse(string input)
     {
-        public override Guid Parse(string input) => Guid.Parse(input);
-
-        public override Guid? TryParse(string input)
+        Guid result;
+        if (Guid.TryParse(input, out result))
         {
-            Guid result;
-            if (Guid.TryParse(input, out result))
-            {
-                return result;
-            }
-
-            return null;
+            return result;
         }
 
-        public override string ToString(Guid value)
-        {
-            return Convert.ToString(value).NotNull();
-        }
+        return null;
     }
+
+    public override string ToString(Guid value) => Convert.ToString(value).NotNull();
 }

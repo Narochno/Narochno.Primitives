@@ -1,31 +1,20 @@
 ﻿using System;
 using System.Reflection;
 
-namespace Narochno.Primitives
+namespace Narochno.Primitives;
+
+public static class TypeExtensions
 {
-    public static class TypeExtensions
+    public static bool IsNullable(this Type type) =>
+        type.GetTypeInfo().IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>);
+
+    public static Type? GetNullableUnderlyingType(this Type type)
     {
-#if PORTABLE40
-        public static bool IsNullable(this Type type)
+        if (type.IsNullable())
         {
-            return type.IsGenericType && type.GetGenericTypeDefinition() == typeof(Nullable<>);
+            return Nullable.GetUnderlyingType(type);
         }
-#else
-        public static bool IsNullable(this Type type)
-        {
-            return type.GetTypeInfo().IsGenericType
-                && type.GetGenericTypeDefinition() == typeof(Nullable<>);
-        }
-#endif
 
-        public static Type? GetNullableUnderlyingType(this Type type)
-        {
-            if (type.IsNullable())
-            {
-                return Nullable.GetUnderlyingType(type);
-            }
-
-            return type;
-        }
+        return type;
     }
 }
