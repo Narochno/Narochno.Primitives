@@ -53,7 +53,10 @@ Target(
     DependsOn(Restore),
     () =>
     {
-        Run("dotnet", "build src/Narochno.EnvFile/Narochno.EnvFile.csproj -c Release --no-restore");
+        Run(
+            "dotnet",
+            "build src/Narochno.Primitives/Narochno.Primitives.csproj -c Release --no-restore"
+        );
     }
 );
 
@@ -79,7 +82,10 @@ Target(
     DependsOn(Test),
     () =>
     {
-        Run("dotnet", "pack src/Narochno.EnvFile/Narochno.EnvFile.csproj -c Release -o artifacts/");
+        Run(
+            "dotnet",
+            "pack src/Narochno.Primitives/Narochno.Primitives.csproj -c Release -o artifacts/"
+        );
     }
 );
 
