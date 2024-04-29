@@ -5,18 +5,6 @@ namespace Narochno.Primitives
 {
     public static class EnumerableExtensions
     {
-        public static Optional<T> SingleOrOptional<T>(this IEnumerable<T> items)
-            where T : class
-        {
-            return new Optional<T>(items.SingleOrDefault());
-        }
-
-        public static Optional<T> FirstOrOptional<T>(this IEnumerable<T> items)
-            where T : class
-        {
-            return new Optional<T>(items.FirstOrDefault());
-        }
-
         public static IEnumerable<T> AsEnumerable<T>(this T item)
         {
             if (item != null)
@@ -28,7 +16,7 @@ namespace Narochno.Primitives
         public static IEnumerable<IEnumerable<TSource>> Batch<TSource>(
             this IEnumerable<TSource> source, int size)
         {
-            TSource[] bucket = null;
+            TSource[]? bucket = null;
             var count = 0;
 
             foreach (var item in source)

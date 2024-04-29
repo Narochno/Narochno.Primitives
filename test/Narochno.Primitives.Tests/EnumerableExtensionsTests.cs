@@ -8,7 +8,7 @@ namespace Narochno.Primitives.Tests
         [Fact]
         public void TestAsEnumerable()
         {
-            string x = null;
+            string? x = null;
             Assert.Empty( x.AsEnumerable());
 
             int y = 0;
@@ -21,45 +21,12 @@ namespace Narochno.Primitives.Tests
             Assert.Empty(z.AsEnumerable());
         }
 
-        [Fact]
-        public void TestFirstOrOptional()
-        {
-            var optional = "test".AsEnumerable().FirstOrOptional();
-
-            Assert.True(optional.HasValue);
-            Assert.Equal("test", optional.Value);
-        }
-
-        [Fact]
-        public void TestFirstOrOptionalNoValue()
-        {
-            var optional = new string[0].FirstOrOptional();
-
-            Assert.False(optional.HasValue);
-        }
-
-        [Fact]
-        public void TestSingleOrOptional()
-        {
-            var optional = "test".AsEnumerable().SingleOrOptional();
-
-            Assert.True(optional.HasValue);
-            Assert.Equal("test", optional.Value);
-        }
-
-        [Fact]
-        public void TestSingleOrOptionalNoValue()
-        {
-            var optional = new string[0].SingleOrOptional();
-
-            Assert.False(optional.HasValue);
-        }
 
 
         [Fact]
         public void TestBatch()
         {
-            var items = new string[] {"a", "b", "c"};
+            var items = new[] {"a", "b", "c"};
 
             var batches = items.Batch(2).ToList();
 

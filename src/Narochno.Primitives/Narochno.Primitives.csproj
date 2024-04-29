@@ -4,7 +4,7 @@
     <Description>Classes designed to make working with C# code easier.</Description>
     <VersionPrefix>3.0.1</VersionPrefix>
     <Authors>alanedwardes;adamhathcock</Authors>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>net8.0;netstandard2.0</TargetFrameworks>
     <AssemblyName>Narochno.Primitives</AssemblyName>
     <PackageId>Narochno.Primitives</PackageId>
     <PackageTags>csharp;primitives;netcore</PackageTags>

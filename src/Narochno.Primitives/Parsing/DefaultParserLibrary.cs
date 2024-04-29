@@ -7,8 +7,8 @@ namespace Narochno.Primitives.Parsing
 {
     public class DefaultParserLibrary : IParserLibrary
     {
-        private static object lockObject = new object();
-        public static IParserLibrary Instance { get; set; } = new DefaultParserLibrary();
+        private static object lockObject = new();
+        public static IParserLibrary Instance { get; } = new DefaultParserLibrary();
 
         public IDictionary<Type, IParser> Parsers { get; } = new Dictionary<Type, IParser>
         {
@@ -29,27 +29,23 @@ namespace Narochno.Primitives.Parsing
 
         public IParser GetParser(Type type)
         {
-            if (Parsers.ContainsKey(type))
+            if (Parsers.TryGetValue(type, out var parser1))
             {
-                return Parsers[type];
+                return parser1;
             }
 
             lock (lockObject)
             {
-                if (Parsers.ContainsKey(type))
+                if (Parsers.TryGetValue(type, value: out var parser))
                 {
-                    return Parsers[type];
+                    return parser;
                 }
 
                 // Enums need type information,
                 // so each one gets a parser
-#if PORTABLE40
-            if (type.IsEnum)
-#else
                 if (type.GetTypeInfo().IsEnum)
-#endif
                 {
-                    Parsers.Add(type, (IParser) Activator.CreateInstance(typeof(EnumParser<>).MakeGenericType(type)));
+                    Parsers.Add(type, (IParser) Activator.CreateInstance(typeof(EnumParser<>).MakeGenericType(type)).NotNull());
                     return Parsers[type];
                 }
 

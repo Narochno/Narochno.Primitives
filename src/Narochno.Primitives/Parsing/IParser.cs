@@ -12,7 +12,7 @@
         /// </summary>
         /// <param name="input">The input string to convert from</param>
         /// <returns>A converted <typeparamref name="TType"/> object</returns>
-        object TryParse(string input);
+        object? TryParse(string input);
 
         /// <summary>
         /// Convert from <paramref name="input"/> to the type <typeparamref name="TType"/>

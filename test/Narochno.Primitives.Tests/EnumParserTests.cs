@@ -34,17 +34,17 @@ namespace Narochno.Primitives.Parsing.Tests
         [Fact]
         public void TestParseAttributeToOptional()
         {
-            Assert.Equal(TestEnum.One, "test_one".TryParse<TestEnum>().Value);
-            Assert.Equal(TestEnum.Two, "test_two".TryParse<TestEnum>().Value);
-            Assert.Equal(TestEnum.Three, "test_three".TryParse<TestEnum>().Value);
+            Assert.Equal(TestEnum.One, "test_one".TryParse<TestEnum>().NotNull());
+            Assert.Equal(TestEnum.Two, "test_two".TryParse<TestEnum>().NotNull());
+            Assert.Equal(TestEnum.Three, "test_three".TryParse<TestEnum>().NotNull());
         }
 
         [Fact]
         public void TestParseNoAttributeToOptional()
         {
-            Assert.Equal(TestEnum.One, "One".TryParse<TestEnum>().Value);
-            Assert.Equal(TestEnum.Two, "Two".TryParse<TestEnum>().Value);
-            Assert.Equal(TestEnum.Three, "Three".TryParse<TestEnum>().Value);
+            Assert.Equal(TestEnum.One, "One".TryParse<TestEnum>().NotNull());
+            Assert.Equal(TestEnum.Two, "Two".TryParse<TestEnum>().NotNull());
+            Assert.Equal(TestEnum.Three, "Three".TryParse<TestEnum>().NotNull());
         }
 
         [Fact]
@@ -52,7 +52,7 @@ namespace Narochno.Primitives.Parsing.Tests
         {
             Assert.Throws<ArgumentException>(() => "lol".Parse<TestEnum>());
             Assert.Throws<ArgumentException>(() => string.Empty.Parse<TestEnum>());
-            Assert.Throws<ArgumentNullException>(() => ((string)null).Parse<TestEnum>());
+            Assert.Throws<ArgumentNullException>(() => ((string)null!).Parse<TestEnum>());
         }
 
         [Fact]
@@ -60,7 +60,7 @@ namespace Narochno.Primitives.Parsing.Tests
         {
             Assert.False("lol".TryParse<TestEnum>().HasValue);
             Assert.False(string.Empty.TryParse<TestEnum>().HasValue);
-            Assert.False(((string)null).TryParse<TestEnum>().HasValue);
+            Assert.False(((string)null!).TryParse<TestEnum>().HasValue);
         }
     }
 }

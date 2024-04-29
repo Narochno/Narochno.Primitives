@@ -7,7 +7,7 @@ namespace Narochno.Primitives.Tests
     /// <summary>
     /// Test class to compare the timings of each
     /// parse method using a large number of iterations.
-    /// 
+    ///
     /// A good way to use this class is to test before changes
     /// and afterwards, to see if/how the time to parse has changed.
     /// </summary>
@@ -41,7 +41,7 @@ namespace Narochno.Primitives.Tests
         {
             for (var i = 0; i < Iterations; i++)
             {
-                Assert.True("true".TryParse<bool>().Value);
+                Assert.True("true".TryParse<bool>().NotNull());
             }
         }
 
@@ -79,7 +79,7 @@ namespace Narochno.Primitives.Tests
         {
             for (var i = 0; i < Iterations; i++)
             {
-                Assert.Equal(DateTimeKind.Utc, "Utc".TryParse<DateTimeKind>().Value);
+                Assert.Equal(DateTimeKind.Utc, "Utc".TryParse<DateTimeKind>().NotNull());
             }
         }
 

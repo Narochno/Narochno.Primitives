@@ -8,7 +8,7 @@
         where TType : struct
     {
         object IParser.Parse(string input) => Parse(input);
-        object IParser.TryParse(string input) => TryParse(input);
+        object? IParser.TryParse(string input) => TryParse(input);
         string IParser.ToString(object input) => ToString((TType)input);
 
         /// <summary>

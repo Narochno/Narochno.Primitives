@@ -17,7 +17,7 @@ namespace Narochno.Primitives
         }
         #endif
 
-        public static Type GetNullableUnderlyingType(this Type type)
+        public static Type? GetNullableUnderlyingType(this Type type)
         {
             if (type.IsNullable())
             {

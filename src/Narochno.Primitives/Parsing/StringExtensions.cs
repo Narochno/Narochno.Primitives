@@ -11,7 +11,7 @@ namespace Narochno.Primitives.Parsing
         /// <param name="input">The input string</param>
         /// <returns>The Optional <typeparamref name="TType"/> parsed from the string <paramref name="input"/></returns>
         public static TType? TryParse<TType>(this string input)
-            where TType : struct 
+            where TType : struct
         {
             return DefaultParserLibrary.Instance.GetParser<TType>()
                 .TryParse(input);
@@ -23,7 +23,7 @@ namespace Narochno.Primitives.Parsing
         /// <param name="input">The input string</param>
         /// <param name="type">The type to convert to</param>
         /// <returns>The IOptional parsed from the string <paramref name="input"/></returns>
-        public static object TryParse(this string input, Type type)
+        public static object? TryParse(this string input, Type type)
         {
             return DefaultParserLibrary.Instance.GetParser(type)
                 .TryParse(input);
@@ -36,7 +36,7 @@ namespace Narochno.Primitives.Parsing
         /// <param name="input">The input string</param>
         /// <returns>The type <typeparamref name="TType"/> parsed from the string <paramref name="input"/></returns>
         public static TType Parse<TType>(this string input)
-            where TType : struct 
+            where TType : struct
         {
             return DefaultParserLibrary.Instance.GetParser<TType>()
                 .Parse(input);

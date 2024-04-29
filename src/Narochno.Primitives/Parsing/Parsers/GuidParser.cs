@@ -19,7 +19,7 @@ namespace Narochno.Primitives.Parsing.Parsers
 
         public override string ToString(Guid value)
         {
-            return Convert.ToString(value);
+            return Convert.ToString(value).NotNull();
         }
     }
 }

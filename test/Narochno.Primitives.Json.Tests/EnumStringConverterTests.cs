@@ -54,7 +54,7 @@ namespace Narochno.Primitives.Json.Tests
         {
             var result = JsonConvert.DeserializeObject<TestObject>("{\"Test\":\"Second\"}", serializerSettings);
 
-            Assert.Equal(TestEnum.Two, result.Test);
+            Assert.Equal(TestEnum.Two, result?.Test);
         }
 
         [Fact]
@@ -62,7 +62,7 @@ namespace Narochno.Primitives.Json.Tests
         {
             var result = JsonConvert.DeserializeObject<TestObject>("{\"Test\":\"Three\"}", serializerSettings);
 
-            Assert.Equal(TestEnum.Three, result.Test);
+            Assert.Equal(TestEnum.Three, result?.Test);
         }
 
         [Fact]
@@ -87,7 +87,7 @@ namespace Narochno.Primitives.Json.Tests
         {
             var result = JsonConvert.DeserializeObject<TestObjectNullable>("{\"Test\":\"Second\"}", serializerSettings);
 
-            Assert.Equal(TestEnum.Two, result.Test);
+            Assert.Equal(TestEnum.Two, result?.Test);
         }
 
         [Fact]
