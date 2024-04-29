@@ -7,7 +7,6 @@
     <TargetFrameworks>net8.0;netstandard2.0</TargetFrameworks>
     <AssemblyName>Narochno.Primitives</AssemblyName>
     <PackageId>Narochno.Primitives</PackageId>
-    <PackageIcon>https://avatars.githubusercontent.com/u/24652538</PackageIcon>
     <PackageProjectUrl>https://github.com/Narochno/Narochno.Primitives</PackageProjectUrl>
   </PropertyGroup>
 </Project>
