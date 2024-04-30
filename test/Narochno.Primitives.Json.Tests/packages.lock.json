@@ -102,7 +102,7 @@
       "narochno.primitives.json": {
         "type": "Project",
         "dependencies": {
-          "Narochno.Primitives": "[3.0.1, )",
+          "Narochno.Primitives": "[4.0.0, )",
           "Newtonsoft.Json": "[13.0.2, )"
         }
       },

@@ -9,4 +9,7 @@
     <PackageId>Narochno.Primitives</PackageId>
     <PackageProjectUrl>https://github.com/Narochno/Narochno.Primitives</PackageProjectUrl>
   </PropertyGroup>
+  <ItemGroup>
+    <None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
 </Project>
