@@ -2,33 +2,9 @@
 
 Classes designed to make working with C# code easier.
 
-## Optional&lt;T&gt;
+## NotNull and Empty
 
-A generic struct to allow for optional reference values. It allows you to write code that assumes all variables except those wrapped with `Optional<T>` are specified, avoiding the need for null checks and possible null reference exceptions.
-
-It is the same concept as `Nullable<T>`, but can be used for reference types instead of value types.
-
-### Example Usage
-
-```csharp
-public async Task RecordInformation(Information information, Optional<Location> location)
-{
-    var document = new Document();
-    document["name"] = information.Name;
-    document["email"] = information.Email;
-
-    if (location.HasValue)
-    {
-        document["country"] = location.Value.Country;
-        document["city"] = location.Value.City;
-    }
-
-    await Table.LoadTable(dynamoClient, "Information")
-        .PutItemAsync(document);
-}
-```
-
-The use of `Optional<T>` in the code above to wrap the `Location` object is an explicit way to show that it may not be set, without a null check. Anyone calling and editing the code can see the intent of the parameter from a glance.
+Helpers that remove of the constant issues around checking `null` on all types and collections.  If you find yourself doing "if not then throw" or "null or empty collection" then these help you out.
 
 ## Generic Parsing
 
